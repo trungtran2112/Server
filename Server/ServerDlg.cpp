@@ -223,10 +223,11 @@ UINT handle_client(LPVOID param)
 	CServerDlg* ptr = (CServerDlg*)param;
 	while (true)
 	{
+
+		ptr->client_addr_len[ptr->id + 1] = sizeof(ptr->client_addr[ptr->id + 1]);
+		ptr->client_socket[ptr->id + 1] = accept(ptr->listen_socket,
+			(sockaddr*)&ptr->client_addr[ptr->id + 1], &ptr->client_addr_len[ptr->id + 1]);
 		ptr->id++;
-		ptr->client_addr_len[ptr->id] = sizeof(ptr->client_addr[ptr->id]);
-		ptr->client_socket[ptr->id] = accept(ptr->listen_socket, 
-			(sockaddr*)&ptr->client_addr[ptr->id], &ptr->client_addr_len[ptr->id]);
 		ptr->client_thread[ptr->id] = AfxBeginThread(new_client, ptr);
 	}
 
@@ -344,15 +345,4 @@ void CServerDlg::OnBnClickedBtnShutdown()
 {
 	// TODO: Add your control notification handler code here
 	delete_list(working_list);
-	for (int i = 0; i < 100; i++)
-	{
-		closesocket(client_socket[i]);
-	}
-}
-
-void CServerDlg::OnClose()
-{
-	// TODO: Add your message handler code here and/or call default
-	OnBnClickedBtnShutdown();
-	CDialogEx::OnClose();
 }
