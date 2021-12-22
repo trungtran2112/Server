@@ -2,7 +2,8 @@
 // ServerDlg.h : header file
 //
 
-#pragma once
+#ifndef SERVERDLG_H
+#define SERVERDLG_H
 
 #define PORT 2831
 #define WM_SOCKET WM_USER+1
@@ -77,3 +78,4 @@ public:
 
 	
 };
+#endif
