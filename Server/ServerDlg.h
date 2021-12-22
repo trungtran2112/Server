@@ -57,6 +57,7 @@ protected:
 public:
 	afx_msg void OnBnClickedBtnListen();
 	afx_msg void OnBnClickedBtnShutdown();
+	afx_msg void OnClose();
 	//UINT handle_client(LPVOID param);
 	CListBox _list_server_log;
 
@@ -74,5 +75,5 @@ public:
 	CWinThread* client_thread[100];
 
 
-	afx_msg void OnClose();
+	
 };

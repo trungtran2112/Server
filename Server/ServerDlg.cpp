@@ -346,3 +346,8 @@ void CServerDlg::OnBnClickedBtnShutdown()
 	// TODO: Add your control notification handler code here
 	delete_list(working_list);
 }
+
+void CServerDlg::OnClose()
+{
+
+}
