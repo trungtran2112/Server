@@ -5,13 +5,12 @@
 #ifndef SERVERDLG_H
 #define SERVERDLG_H
 
-#define PORT 2831
+#define PORT 1234
 #define WM_SOCKET WM_USER+1
 
 struct user_node
 {
-	CString username;
-	CString password;
+	CString username, password;
 	user_node* pNext = NULL;
 };
 
@@ -77,7 +76,7 @@ public:
 public:
 	CWinThread* update_database_thread;
 	SLList working_list;
-	UserList user;
+	UserList user_list;
 	SOCKET listen_socket;
 	sockaddr_in server_addr;
 

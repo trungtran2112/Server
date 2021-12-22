@@ -17,8 +17,10 @@ UINT update_database(LPVOID param);
 UINT handle_client(LPVOID param);
 UINT new_client(LPVOID param);
 int mSend(CString msg, SOCKET& sock);
-CString mRecv(SOCKET& sock);
-user_node* add_head(UserList& L);
+int mRecv(CString& StrRecv, SOCKET sClient);
+user_node* add_tail(UserList& L);
+bool load_username_from_file(UserList& L);
+void save_username_to_file(UserList L);
 
 // CAboutDlg dialog used for App About
 
@@ -136,6 +138,10 @@ BOOL CServerDlg::OnInitDialog()
 		MessageBox(_T("Không thể lấy dữ liệu! Hãy thử lại"), _T("Lỗi"), MB_ICONSTOP);
 	}
 
+	//Load username
+	load_username_from_file(user_list);
+
+
 	//Update database every 30 minutes
 	update_database_thread = AfxBeginThread(update_database, this);
 
@@ -216,7 +222,7 @@ void CServerDlg::OnBnClickedBtnListen()
 
 	bind(listen_socket, (sockaddr*)&server_addr, sizeof(server_addr));
 	listen(listen_socket, 5);
-	_list_server_log.AddString(_T("Đang lắng nghe kết nối..."));
+	_list_server_log.AddString(_T("Hệ thống: Đang lắng nghe kết nối..."));
 
 	AfxBeginThread(handle_client, this);
 
@@ -243,7 +249,7 @@ UINT new_client(LPVOID param)
 {
 	CServerDlg* ptr = (CServerDlg*)param;
 	int id = ptr->id;
-	int flag;
+	CString flag;
 	int bytes_received, msg_size;
 	char* buff;
 	CString client_name;
@@ -251,88 +257,140 @@ UINT new_client(LPVOID param)
 
 	while (true)
 	{
-		bytes_received = recv(ptr->client_socket[id], (char*)&flag, sizeof(int), 0);
+		bytes_received = mRecv(flag, ptr->client_socket[id]);
 		if (bytes_received <= 0)
 		{
 			//client disconnect
-			//ptr->_list_server_log.AddString()
+			ptr->_list_server_log.AddString(_T("Hệ thống: ") + client_name + _T(" đã ngắt kết nối."));
+			break;
 		}
-		
-		switch (flag)
+
+		int int_flag = _tstoi(flag);
+
+		switch (int_flag)
 		{
-			case 0:	//log in
+		case 0:	//log in
+		{
+			CString username, password;
+			mRecv(username, ptr->client_socket[id]);
+			mRecv(password, ptr->client_socket[id]);
+			user_node* current_node = ptr->user_list.pHead;
+			bool check = false;
+
+			while (current_node != NULL)
 			{
-				CString username = mRecv(ptr->client_socket[id]);
-				CString password = mRecv(ptr->client_socket[id]);
-				user_node* current_node = ptr->user.pHead;
-				bool check = false;
-
-			
-				while (current_node != NULL)
+				if (current_node->username == username && current_node->password == password)
 				{
-					if (current_node->username == username && current_node->password == password)
-					{
 
-						check = true;
-						break;
-					}
-					current_node = current_node->pNext;
+					check = true;
+					break;
 				}
-
-				//0 khong tim duoc tai khoan
-				//1 dang nhap thanh cong
-				if (check == false)//khong kiem thay ten dang nhap
-				{
-					mSend(_T("0"), ptr->client_socket[id]);
-				}
-				else//kiem duoc ten dang nhap va mat khau
-				{
-					mSend(_T("1"), ptr->client_socket[id]);
-					client_name += username;
-					ptr->_list_server_log.AddString(client_name + _T(" đã đăng nhập."));
-				}
-				break;
+				current_node = current_node->pNext;
 			}
-			case 1: //register
+
+			//0 khong tim duoc tai khoan
+			//1 dang nhap thanh cong
+			if (check == false)//khong kiem thay ten dang nhap
 			{
-				CString username = mRecv(ptr->client_socket[id]);
-				CString password = mRecv(ptr->client_socket[id]);
-				user_node* current_node = ptr->user.pHead;
-				bool check = true;
-
-				while (current_node != NULL)
-				{
-					if (current_node->username == username)
-					{
-
-						check = false;	//trung` ten dang nhap
-						break;
-					}
-					current_node = current_node->pNext;
-				}
-
-				//0 trung` ten dang nhap
-				//1 dang ky thanh cong
-				if (check == false)
-				{
-					mSend(_T("0"), ptr->client_socket[id]);
-				}
-				else
-				{
-					mSend(_T("1"), ptr->client_socket[id]);
-					user_node* newNode = add_head(ptr->user);
-					newNode->username = username;
-					newNode->password = password;
-				}
-				break;
+				mSend(_T("0"), ptr->client_socket[id]);
 			}
+			else//kiem duoc ten dang nhap va mat khau
+			{
+				mSend(_T("1"), ptr->client_socket[id]);
+				client_name += username;
+				ptr->_list_server_log.AddString(_T("Hệ thống: ") + client_name + _T(" đã đăng nhập."));
+			}
+			break;
+		}
+		case 1: //register
+		{
+			CString username, password;
+			mRecv(username, ptr->client_socket[id]);
+			mRecv(password, ptr->client_socket[id]);
+
+			user_node* current_node = ptr->user_list.pHead;
+			bool check = true;
+
+			while (current_node != NULL)
+			{
+				if (current_node->username == username)
+				{
+
+					check = false;	//trung` ten dang nhap
+					break;
+				}
+				current_node = current_node->pNext;
+			}
+
+			//0 trung` ten dang nhap
+			//1 dang ky thanh cong
+			if (check == false)
+			{
+				mSend(_T("0"), ptr->client_socket[id]);
+			}
+			else
+			{
+				mSend(_T("1"), ptr->client_socket[id]);
+				user_node* newNode = add_tail(ptr->user_list);
+				newNode->username = username;
+				newNode->password = password;
+				save_username_to_file(ptr->user_list);
+			}
+			break;
+		}
 		}
 	}
+	closesocket(ptr->client_socket[id]);
 
 	return 0;
 }
 
-user_node* add_head(UserList& L)
+bool load_username_from_file(UserList& L)
+{
+	std::ifstream json_file_stream("username.json");
+	Json::Reader json_reader;
+	Json::Value json_data;
+
+	if (!json_reader.parse(json_file_stream, json_data))
+	{
+		return FALSE;
+	}
+	for (unsigned int i = 0; i < json_data.size(); i++)
+	{
+		user_node* newNode = add_tail(L);
+		newNode->username = json_data[i]["username"].asCString();
+		newNode->password = json_data[i]["password"].asCString();
+	}
+	json_data.clear();
+	json_file_stream.close();
+	return TRUE;
+}
+
+void save_username_to_file(UserList L)
+{
+	std::ofstream output("username.json");
+	user_node* current_node = L.pHead;
+
+	output << "[" << std::endl;
+	while (current_node != NULL)
+	{
+		output << "{\"username\":\"" << CStringA(current_node->username) << "\"," << std::endl;
+		output << "\"password\":\"" << CStringA(current_node->password) << "\"" << std::endl;
+		output << "}";
+		if (current_node->pNext != NULL)
+		{
+			output << "," << std::endl;
+			current_node = current_node->pNext;
+		}
+		else
+		{
+			output << std::endl << "]";
+			break;
+		}
+	}
+}
+
+user_node* add_tail(UserList& L)
 {
 	user_node* newNode = new user_node;
 	if (newNode == NULL)
@@ -343,8 +401,8 @@ user_node* add_head(UserList& L)
 	}
 	else
 	{
-		newNode->pNext = L.pHead;
-		L.pHead = newNode;
+		L.pTail->pNext = newNode;
+		L.pTail = newNode;
 	}
 	return newNode;
 }
@@ -368,16 +426,16 @@ int mSend(CString msg, SOCKET& sock)
 	return bytesSent;
 }
 
-CString mRecv(SOCKET& sock)
+int mRecv(CString& StrRecv, SOCKET sClient)
 {
 	int buffLen;
-	int buffReceived = recv(sock, (char*)&buffLen, sizeof(int), 0);
+	int buffReceived = recv(sClient, (char*)&buffLen, sizeof(int), 0);
 	if (buffReceived < 0)
 		return NULL;
-	buffLen += 1;
-	CHAR* temp = new CHAR[buffLen];
+	char* temp = new char[buffLen + 1];
 	ZeroMemory(temp, buffLen);
-	int bytesReceived = recv(sock, temp, buffLen, 0);
+	int bytesReceived = recv(sClient, temp, buffLen, 0);
+	temp[buffLen] = '\0';
 	if (bytesReceived < 0)
 	{
 		delete[]temp;
@@ -387,22 +445,21 @@ CString mRecv(SOCKET& sock)
 	{
 		int wchar_num = MultiByteToWideChar(CP_UTF8, 0, temp, strlen(temp), NULL, 0);
 		if (wchar_num <= 0)
-			return NULL;
+			return -1;
 		wchar_t* wstr = new wchar_t[wchar_num + 1];
 		ZeroMemory(wstr, wchar_num);
 		if (!wstr)
 		{
-			return NULL;
+			return -1;
 		}
 		MultiByteToWideChar(CP_UTF8, 0, temp, strlen(temp), wstr, wchar_num);
 		wstr[wchar_num] = '\0';
-		CString X = wstr;
+		StrRecv += wstr;
 		delete[] wstr;
 		delete[] temp;
-		return X;
+		return bytesReceived;
 	}
 }
-
 
 double string_to_double(std::string s)
 {
@@ -580,7 +637,6 @@ UINT update_database(LPVOID Param)
 		//Change encoding to UTF-8
 		json_data_string.erase(0, 4);
 
-		int today_date = 0;
 		Json::Reader json_reader;
 		Json::Value json_data;
 
@@ -591,32 +647,35 @@ UINT update_database(LPVOID Param)
 		}
 		else
 		{
-			today_date = std::stoi(json_data["golds"][0]["date"].asString());
-
-			//xóa những node lưu dữ liệu của ngày hôm nay
-			Node* current_node = NULL, * temp = NULL, * pre_node = NULL;
-			pre_node = ptr->working_list.pHead;
-			current_node = pre_node->pNext;
-			while (current_node != NULL)
+			if (ptr->working_list.pHead != NULL)
 			{
-				if (current_node->data.date == today_date)
+				int today_date = std::stoi(json_data["golds"][0]["date"].asString());
+
+				//xóa những node lưu dữ liệu của ngày hôm nay
+				Node* current_node = NULL, * temp = NULL, * pre_node = NULL;
+				pre_node = ptr->working_list.pHead;
+				current_node = pre_node->pNext;
+				while (current_node != NULL)
 				{
-					temp = current_node;
-					current_node = current_node->pNext;
-					pre_node->pNext = current_node;
-					delete temp;
-					continue;
-				}
+					if (current_node->data.date == today_date)
+					{
+						temp = current_node;
+						current_node = current_node->pNext;
+						pre_node->pNext = current_node;
+						delete temp;
+						continue;
+					}
 
-				pre_node = current_node;
-				current_node = current_node->pNext;
-			}
-			ptr->working_list.pTail = pre_node;
-			if (ptr->working_list.pHead->data.date == today_date)
-			{
-				temp = ptr->working_list.pHead;
-				ptr->working_list.pHead = ptr->working_list.pHead->pNext;
-				delete temp;
+					pre_node = current_node;
+					current_node = current_node->pNext;
+				}
+				ptr->working_list.pTail = pre_node;
+				if (ptr->working_list.pHead->data.date == today_date)
+				{
+					temp = ptr->working_list.pHead;
+					ptr->working_list.pHead = ptr->working_list.pHead->pNext;
+					delete temp;
+				}
 			}
 
 			//thêm những node dữ liệu mới
@@ -641,7 +700,7 @@ UINT update_database(LPVOID Param)
 		}
 
 
-		ptr->_list_server_log.AddString(_T("Dữ liệu của hôm nay vừa được cập nhật!"));
+		ptr->_list_server_log.AddString(_T("Hệ thống: Dữ liệu của hôm nay vừa được cập nhật!"));
 		Sleep(1800000);//sleep for 1 800 000 seconds = 30 minutes
 	}
 	return 0;
@@ -656,6 +715,11 @@ void CServerDlg::OnBnClickedBtnShutdown()
 void CServerDlg::OnClose()
 {
 	// TODO: Add your message handler code here and/or call default
+	save_data_to_file(working_list);
+
 	delete_list(working_list);
+
+
+
 	CDialogEx::OnClose();
 }
