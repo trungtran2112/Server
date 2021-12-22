@@ -216,7 +216,6 @@ void CServerDlg::OnBnClickedBtnListen()
 	AfxBeginThread(handle_client, this);
 
 	GetDlgItem(IDC_BTN_LISTEN)->EnableWindow(false);
-
 }
 
 UINT handle_client(LPVOID param)
