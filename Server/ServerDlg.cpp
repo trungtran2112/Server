@@ -72,7 +72,8 @@ BEGIN_MESSAGE_MAP(CServerDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BTN_LISTEN, &CServerDlg::OnBnClickedBtnListen)
 	ON_BN_CLICKED(IDC_BTN_SHUTDOWN, &CServerDlg::OnBnClickedBtnShutdown)
-	ON_WM_CLOSE()
+//	ON_WM_CLOSE()
+ON_WM_CLOSE()
 END_MESSAGE_MAP()
 
 
@@ -349,5 +350,7 @@ void CServerDlg::OnBnClickedBtnShutdown()
 
 void CServerDlg::OnClose()
 {
-
+	// TODO: Add your message handler code here and/or call default
+	OnBnClickedBtnShutdown();
+	CDialogEx::OnClose();
 }
