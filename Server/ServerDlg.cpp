@@ -72,6 +72,7 @@ BEGIN_MESSAGE_MAP(CServerDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BTN_LISTEN, &CServerDlg::OnBnClickedBtnListen)
 	ON_BN_CLICKED(IDC_BTN_SHUTDOWN, &CServerDlg::OnBnClickedBtnShutdown)
+	ON_WM_CLOSE()
 END_MESSAGE_MAP()
 
 
@@ -340,9 +341,19 @@ UINT update_database(LPVOID Param)
 	return 0;
 }
 
-
 void CServerDlg::OnBnClickedBtnShutdown()
 {
 	// TODO: Add your control notification handler code here
 	delete_list(working_list);
+	for (int i = 0; i < 100; i++)
+	{
+		closesocket(client_socket[i]);
+	}
+}
+
+void CServerDlg::OnClose()
+{
+	// TODO: Add your message handler code here and/or call default
+	OnBnClickedBtnShutdown();
+	CDialogEx::OnClose();
 }

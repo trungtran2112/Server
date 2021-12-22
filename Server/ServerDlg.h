@@ -74,4 +74,5 @@ public:
 	CWinThread* client_thread[100];
 
 
+	afx_msg void OnClose();
 };
