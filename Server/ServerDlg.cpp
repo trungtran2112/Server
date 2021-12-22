@@ -192,7 +192,7 @@ HCURSOR CServerDlg::OnQueryDragIcon()
 void CServerDlg::OnBnClickedBtnListen()
 {
 	// TODO: Add your control notification handler code here
-e	UpdateData();
+	UpdateData();
 
 	//tao listen socket
 	listen_socket = socket(AF_INET, SOCK_STREAM, 0);
