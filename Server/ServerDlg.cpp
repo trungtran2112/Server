@@ -57,6 +57,7 @@ END_MESSAGE_MAP()
 CServerDlg::CServerDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_SERVER_DIALOG, pParent)
 {
+
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
 
@@ -72,8 +73,8 @@ BEGIN_MESSAGE_MAP(CServerDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BTN_LISTEN, &CServerDlg::OnBnClickedBtnListen)
 	ON_BN_CLICKED(IDC_BTN_SHUTDOWN, &CServerDlg::OnBnClickedBtnShutdown)
-//	ON_WM_CLOSE()
-ON_WM_CLOSE()
+	//	ON_WM_CLOSE()
+	ON_WM_CLOSE()
 END_MESSAGE_MAP()
 
 
@@ -270,6 +271,21 @@ double string_to_double(std::string s)
 	return value;
 }
 
+Node* add_head(SLList& L)
+{
+	Node* newNode = new Node;
+	if (newNode == NULL)
+		return NULL;
+	if (L.pHead == NULL)
+		L.pHead = L.pTail = newNode;
+	else
+	{
+		newNode->pNext = L.pHead;
+		L.pHead = newNode;
+	}
+	return newNode;
+}
+
 Node* add_tail(SLList& L)
 {
 	Node* newNode = new Node;
@@ -283,13 +299,6 @@ Node* add_tail(SLList& L)
 		L.pTail = newNode;
 	}
 	return newNode;
-}
-
-size_t callback(char* buffer, size_t size, size_t num, std::string* json_data)
-{
-	size_t totalBytes = size * num;
-	json_data->append(buffer, totalBytes);
-	return totalBytes;
 }
 
 bool load_data(SLList& L)
@@ -312,6 +321,8 @@ bool load_data(SLList& L)
 			newNode->data.type = json_data[i]["value"][j]["type"].asString();
 		}
 	}
+	json_data.clear();
+	json_file_stream.close();
 	return TRUE;
 }
 
@@ -329,15 +340,152 @@ void delete_list(SLList& L)
 	L.pHead = L.pTail = NULL;
 }
 
+void save_data_to_file(SLList L)
+{
+	std::ofstream output("tygia.json");
+	Node* currentNode = L.pHead;
+
+	output << "[";
+	while (true)
+	{
+		output << "{\"date\":\"" << currentNode->data.date << "\",\n\"value\":[" << std::endl;
+		while (true)
+		{
+			output << "{" << std::endl;
+			output << "\"buy\":\"" << currentNode->data.buy << "\"," << std::endl;
+			output << "\"sell\":\"" << currentNode->data.sell << "\"," << std::endl;
+			output << "\"company\":\"" << currentNode->data.company << "\"," << std::endl;
+			output << "\"brand\":\"" << currentNode->data.brand << "\"," << std::endl;
+			output << "\"type\":\"" << currentNode->data.type << "\"," << std::endl;
+			output << "\"date\":\"" << currentNode->data.date << "\"" << std::endl;
+			output << "}";
+			if (currentNode->pNext == NULL)
+				break;
+			if (currentNode->data.date != currentNode->pNext->data.date)
+			{
+				currentNode = currentNode->pNext;
+				break;
+			}
+			output << "," << std::endl;
+			currentNode = currentNode->pNext;
+		}
+		output << "]" << std::endl;
+		output << "}" << std::endl;
+
+		if (currentNode->pNext == NULL)
+		{
+			output << "";
+			break;
+		}
+		output << "," << std::endl;
+	}
+	output << "]";
+	output.close();
+}
+
+size_t callback(char* buffer, size_t size, size_t num, std::string* json_data)
+{
+	size_t totalBytes = size * num;
+	json_data->append(buffer, totalBytes);
+	return totalBytes;
+}
+
 UINT update_database(LPVOID Param)
 {
 	CServerDlg* ptr = (CServerDlg*)Param;
+	std::string url = "https://tygia.com/json.php?ran=0&rate=0&gold=1&bank=VIETCOM&date=now";
+	std::string json_data_string;
+	CURL* curl;
+
 	while (true)
 	{
+		json_data_string.clear();
+		curl = curl_easy_init();
+
+		//Curl Option
+		curl_easy_setopt(curl, CURLOPT_URL, url.c_str());					//lay url
+		curl_easy_setopt(curl, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);		//lay ipv4
+		curl_easy_setopt(curl, CURLOPT_TIMEOUT, 10);						//time out
+		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, callback);			//viet data
+		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &json_data_string);		//gan string*out vao jsonString
+
+		//Curl perform
+		CURLcode result = curl_easy_perform(curl);
+		if (result != CURLE_OK)
+		{
+			ptr->_list_server_log.AddString(_T("Hệ thống: Lấy dữ liệu từ web không thành công."));
+			continue;
+		}
+
+		//End curl
+		curl_easy_cleanup(curl);
+
+		//Change encoding to UTF-8
+		json_data_string.erase(0, 4);
+
+		int today_date = 0;
+		Json::Reader json_reader;
+		Json::Value json_data;
+
+		if (!json_reader.parse(json_data_string, json_data))
+		{
+			ptr->_list_server_log.AddString(_T("Hệ thống: Không thể dịch dữ liệu Json."));
+			continue;
+		}
+		else
+		{
+			today_date = std::stoi(json_data["golds"][0]["date"].asString());
+
+			//xóa những node lưu dữ liệu của ngày hôm nay
+			Node* current_node = NULL, * temp = NULL, * pre_node = NULL;
+			pre_node = ptr->working_list.pHead;
+			current_node = pre_node->pNext;
+			while (current_node != NULL)
+			{
+				if (current_node->data.date == today_date)
+				{
+					temp = current_node;
+					current_node = current_node->pNext;
+					pre_node->pNext = current_node;
+					delete temp;
+					continue;
+				}
+
+				pre_node = current_node;
+				current_node = current_node->pNext;
+			}
+			ptr->working_list.pTail = pre_node;
+			if (ptr->working_list.pHead->data.date == today_date)
+			{
+				temp = ptr->working_list.pHead;
+				ptr->working_list.pHead = ptr->working_list.pHead->pNext;
+				delete temp;
+			}
+
+			//thêm những node dữ liệu mới
+			for (int i = 0; i < json_data["golds"][0]["value"].size(); i++)
+			{
+				Node* newNode = add_head(ptr->working_list);
+
+				newNode->data.buy = string_to_double(json_data["golds"][0]["value"][i]["buy"].asString());
+				newNode->data.sell = string_to_double(json_data["golds"][0]["value"][i]["sell"].asString());
+				newNode->data.date = std::stoi(json_data["golds"][0]["value"][i]["day"].asString());
+				newNode->data.company = json_data["golds"][0]["value"][i]["company"].asString();
+				newNode->data.brand = json_data["golds"][0]["value"][i]["brand"].asString();
+				newNode->data.type = json_data["golds"][0]["value"][i]["type"].asString();
+			}
+
+			//Cleanup
+			json_data.clear();
+
+			//lưu dữ liệu vào file
+			save_data_to_file(ptr->working_list);
+
+		}
 
 
 		ptr->_list_server_log.AddString(_T("Dữ liệu của hôm nay vừa được cập nhật!"));
-		Sleep(1800000);//sleep for 1 800 000 seconds ~ 30 minutes
+		Sleep(1800000);//sleep for 1 800 000 seconds = 30 minutes
 	}
 	return 0;
 }
@@ -345,12 +493,12 @@ UINT update_database(LPVOID Param)
 void CServerDlg::OnBnClickedBtnShutdown()
 {
 	// TODO: Add your control notification handler code here
-	delete_list(working_list);
+
 }
 
 void CServerDlg::OnClose()
 {
 	// TODO: Add your message handler code here and/or call default
-	OnBnClickedBtnShutdown();
+	delete_list(working_list);
 	CDialogEx::OnClose();
 }
