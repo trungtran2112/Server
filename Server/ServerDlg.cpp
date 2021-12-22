@@ -15,6 +15,7 @@
 bool load_data(SLList& L);
 UINT update_database(LPVOID param);
 UINT handle_client(LPVOID param);
+UINT new_client(LPVOID param);
 
 // CAboutDlg dialog used for App About
 
@@ -192,7 +193,7 @@ HCURSOR CServerDlg::OnQueryDragIcon()
 void CServerDlg::OnBnClickedBtnListen()
 {
 	// TODO: Add your control notification handler code here
-e	UpdateData();
+	UpdateData();
 
 	//tao listen socket
 	listen_socket = socket(AF_INET, SOCK_STREAM, 0);
@@ -222,9 +223,22 @@ UINT handle_client(LPVOID param)
 	CServerDlg* ptr = (CServerDlg*)param;
 	while (true)
 	{
-		
+		ptr->id++;
+		ptr->client_addr_len[ptr->id] = sizeof(ptr->client_addr[ptr->id]);
+		ptr->client_socket[ptr->id] = accept(ptr->listen_socket, 
+			(sockaddr*)&ptr->client_addr[ptr->id], &ptr->client_addr_len[ptr->id]);
+		ptr->client_thread[ptr->id] = AfxBeginThread(new_client, ptr);
 	}
 
+	return 0;
+}
+
+UINT new_client(LPVOID param)
+{
+	CServerDlg* ptr = (CServerDlg*)param;
+	int id = ptr->id;
+	CString msg = _T("Client ") + id + _T(" đã kết nối.");
+	ptr->_list_server_log.AddString(msg);
 	return 0;
 }
 
