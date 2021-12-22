@@ -16,6 +16,9 @@ bool load_data(SLList& L);
 UINT update_database(LPVOID param);
 UINT handle_client(LPVOID param);
 UINT new_client(LPVOID param);
+int mSend(CString msg, SOCKET& sock);
+CString mRecv(SOCKET& sock);
+user_node* add_head(UserList& L);
 
 // CAboutDlg dialog used for App About
 
@@ -240,12 +243,166 @@ UINT new_client(LPVOID param)
 {
 	CServerDlg* ptr = (CServerDlg*)param;
 	int id = ptr->id;
-	CString _t_id;
-	_t_id.Format(_T("%d"), id);
-	CString msg = _T("Client ") + _t_id + _T(" đã kết nối.");
-	ptr->_list_server_log.AddString(msg);
+	int flag;
+	int bytes_received, msg_size;
+	char* buff;
+	CString client_name;
+	CString msg;
+
+	while (true)
+	{
+		bytes_received = recv(ptr->client_socket[id], (char*)&flag, sizeof(int), 0);
+		if (bytes_received <= 0)
+		{
+			//client disconnect
+			//ptr->_list_server_log.AddString()
+		}
+		
+		switch (flag)
+		{
+			case 0:	//log in
+			{
+				CString username = mRecv(ptr->client_socket[id]);
+				CString password = mRecv(ptr->client_socket[id]);
+				user_node* current_node = ptr->user.pHead;
+				bool check = false;
+
+			
+				while (current_node != NULL)
+				{
+					if (current_node->username == username && current_node->password == password)
+					{
+
+						check = true;
+						break;
+					}
+					current_node = current_node->pNext;
+				}
+
+				//0 khong tim duoc tai khoan
+				//1 dang nhap thanh cong
+				if (check == false)//khong kiem thay ten dang nhap
+				{
+					mSend(_T("0"), ptr->client_socket[id]);
+				}
+				else//kiem duoc ten dang nhap va mat khau
+				{
+					mSend(_T("1"), ptr->client_socket[id]);
+					client_name = username;
+					ptr->_list_server_log.AddString(username + _T(" đã đăng nhập."));
+				}
+				break;
+			}
+			case 1: //register
+			{
+				CString username = mRecv(ptr->client_socket[id]);
+				CString password = mRecv(ptr->client_socket[id]);
+				user_node* current_node = ptr->user.pHead;
+				bool check = true;
+
+				while (current_node != NULL)
+				{
+					if (current_node->username == username)
+					{
+
+						check = false;	//trung` ten dang nhap
+						break;
+					}
+					current_node = current_node->pNext;
+				}
+
+				//0 trung` ten dang nhap
+				//1 dang ky thanh cong
+				if (check == false)
+				{
+					mSend(_T("0"), ptr->client_socket[id]);
+				}
+				else
+				{
+					mSend(_T("1"), ptr->client_socket[id]);
+					user_node* newNode = add_head(ptr->user);
+					newNode->username = username;
+					newNode->password = password;
+				}
+				break;
+			}
+		}
+	}
+
 	return 0;
 }
+
+user_node* add_head(UserList& L)
+{
+	user_node* newNode = new user_node;
+	if (newNode == NULL)
+		return NULL;
+	if (L.pHead == NULL)
+	{
+		L.pHead = L.pTail = newNode;
+	}
+	else
+	{
+		newNode->pNext = L.pHead;
+		L.pHead = newNode;
+	}
+	return newNode;
+}
+
+int mSend(CString msg, SOCKET& sock)
+{
+	int wstr_len = (int)wcslen(msg);	//get length
+	int num_chars = WideCharToMultiByte(CP_UTF8, 0, msg, wstr_len, NULL, 0, NULL, NULL);
+	CHAR* strTo = new CHAR[num_chars + 1];
+	if (strTo)
+	{
+		WideCharToMultiByte(CP_UTF8, 0, msg, wstr_len, strTo, num_chars, NULL, NULL);
+		strTo[num_chars] = '\0';
+	}
+	int buffSent = send(sock, (char*)&num_chars, sizeof(int), 0);
+	if (buffSent <= 0)
+		return 0;
+	int bytesSent = send(sock, strTo, num_chars, 0);
+	if (bytesSent <= 0)
+		return 0;
+	return bytesSent;
+}
+
+CString mRecv(SOCKET& sock)
+{
+	int buffLen;
+	int buffReceived = recv(sock, (char*)&buffLen, sizeof(int), 0);
+	if (buffReceived < 0)
+		return NULL;
+	buffLen += 1;
+	CHAR* temp = new CHAR[buffLen];
+	ZeroMemory(temp, buffLen);
+	int bytesReceived = recv(sock, temp, buffLen, 0);
+	if (bytesReceived < 0)
+	{
+		delete[]temp;
+		return NULL;
+	}
+	else
+	{
+		int wchar_num = MultiByteToWideChar(CP_UTF8, 0, temp, strlen(temp), NULL, 0);
+		if (wchar_num <= 0)
+			return NULL;
+		wchar_t* wstr = new wchar_t[wchar_num + 1];
+		ZeroMemory(wstr, wchar_num);
+		if (!wstr)
+		{
+			return NULL;
+		}
+		MultiByteToWideChar(CP_UTF8, 0, temp, strlen(temp), wstr, wchar_num);
+		wstr[wchar_num] = '\0';
+		CString X = wstr;
+		delete[] wstr;
+		delete[] temp;
+		return X;
+	}
+}
+
 
 double string_to_double(std::string s)
 {

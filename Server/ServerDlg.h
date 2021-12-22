@@ -8,6 +8,18 @@
 #define PORT 2831
 #define WM_SOCKET WM_USER+1
 
+struct user_node
+{
+	CString username;
+	CString password;
+	user_node* pNext = NULL;
+};
+
+struct UserList
+{
+	user_node* pHead = NULL, * pTail = NULL;
+};
+
 struct Element
 {
 	double buy = 0, sell = 0;
@@ -65,6 +77,7 @@ public:
 public:
 	CWinThread* update_database_thread;
 	SLList working_list;
+	UserList user;
 	SOCKET listen_socket;
 	sockaddr_in server_addr;
 
