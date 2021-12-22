@@ -29,10 +29,13 @@
 #include <afxcontrolbars.h>     // MFC support for ribbons and control bars
 
 
+#include <WinSock2.h>
+#include <WS2tcpip.h>
+#include <curl/curl.h>
+#include <json/json.h>
+#include <fstream>
 
-
-
-
+#pragma comment(lib, "Ws2_32.lib")
 
 
 

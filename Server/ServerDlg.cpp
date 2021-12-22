@@ -237,7 +237,9 @@ UINT new_client(LPVOID param)
 {
 	CServerDlg* ptr = (CServerDlg*)param;
 	int id = ptr->id;
-	CString msg = _T("Client ") + id + _T(" đã kết nối.");
+	CString _t_id;
+	_t_id.Format(_T("%d"), id);
+	CString msg = _T("Client ") + _t_id + _T(" đã kết nối.");
 	ptr->_list_server_log.AddString(msg);
 	return 0;
 }

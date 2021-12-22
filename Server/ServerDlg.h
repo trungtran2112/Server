@@ -4,13 +4,6 @@
 
 #pragma once
 
-#include <WinSock2.h>
-#include <WS2tcpip.h>
-#include <curl/curl.h>
-#include <json/json.h>
-#include <fstream>
-
-#pragma comment(lib, "Ws2_32.lib")
 #define PORT 2831
 #define WM_SOCKET WM_USER+1
 
