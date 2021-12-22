@@ -288,8 +288,8 @@ UINT new_client(LPVOID param)
 				else//kiem duoc ten dang nhap va mat khau
 				{
 					mSend(_T("1"), ptr->client_socket[id]);
-					client_name = username;
-					ptr->_list_server_log.AddString(username + _T(" đã đăng nhập."));
+					client_name += username;
+					ptr->_list_server_log.AddString(client_name + _T(" đã đăng nhập."));
 				}
 				break;
 			}
