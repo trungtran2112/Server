@@ -557,7 +557,7 @@ UINT client_thread(LPVOID param)
 						break;
 				} while (current_node->data.date == current_node->pNext->data.date);
 				if (no_item_found == true)
-					mSend(_T("0"), ptr->client_socket[id]);
+					mSend(_T("0"), ptr->client_socket[id]);			//gui tin hieu la khong tim duoc du lieu
 				else
 					mSend(_T("-1"), ptr->client_socket[id]);		//gui tin hieu de NGUNG nhan du lieu
 			}
