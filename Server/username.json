@@ -1,18 +1,10 @@
 [
-{
-"username":"trung",
-"password":"trung"
-},
-{
-"username":"hello",
-"password":"hello"
-},
-{
-"username":"2002",
-"password":"2002"
-},
-{
-"username":"1",
-"password":"1"
-}
+  {
+    "username": "trung",
+    "password": "trung"
+  },
+  {
+    "username": "1",
+    "password": "1"
+  }
 ]
