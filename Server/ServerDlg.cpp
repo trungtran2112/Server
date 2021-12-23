@@ -15,7 +15,7 @@
 bool load_data(SLList& L);
 UINT update_database(LPVOID param);
 UINT handle_client(LPVOID param);
-UINT new_client(LPVOID param);
+UINT client_thread(LPVOID param);
 int mSend(CString msg, SOCKET& sock);
 int mRecv(CString& StrRecv, SOCKET sClient);
 user_node* add_tail(UserList& L);
@@ -239,13 +239,13 @@ UINT handle_client(LPVOID param)
 		ptr->client_socket[ptr->id + 1] = accept(ptr->listen_socket,
 			(sockaddr*)&ptr->client_addr[ptr->id + 1], &ptr->client_addr_len[ptr->id + 1]);
 		ptr->id++;
-		ptr->client_thread[ptr->id] = AfxBeginThread(new_client, ptr);
+		ptr->client_thread[ptr->id] = AfxBeginThread(client_thread, ptr);
 	}
 
 	return 0;
 }
 
-UINT new_client(LPVOID param)
+UINT client_thread(LPVOID param)
 {
 
 	CServerDlg* ptr = (CServerDlg*)param;
@@ -262,12 +262,15 @@ UINT new_client(LPVOID param)
 		if (bytes_received == 0)
 		{
 			//client disconnect
-			ptr->_list_server_log.AddString(_T("Hệ thống: \"") + client_name + _T("\" đã ngắt kết nối."));
+			if(client_name!="")
+				ptr->_list_server_log.AddString(_T("Hệ thống: ") + client_name + _T(" đã ngắt kết nối."));
+			else
+				ptr->_list_server_log.AddString(_T("Hệ thống: Một client chưa đăng nhập đã ngắt kết nối."));
 			break;
 		}
 		else if (bytes_received < 0)
 		{
-			ptr->_list_server_log.AddString(_T("Hệ thống: Có sự cố xảy ra với \"") + client_name + _T("\"."));
+			ptr->_list_server_log.AddString(_T("Hệ thống: Có sự cố xảy ra với ") + client_name + _T("."));
 			break;
 		}
 
@@ -346,6 +349,7 @@ UINT new_client(LPVOID param)
 		}
 		case 2://data query
 		{
+			int break_check = false;
 			CString company, type, brand, date;
 			mRecv(company, ptr->client_socket[id]);
 			mRecv(type, ptr->client_socket[id]);
@@ -359,85 +363,184 @@ UINT new_client(LPVOID param)
 				a[1] = 1;
 			if (brand.Compare(_T("Tất cả")) == 0)
 				a[2] = 1;
-			int temp = 2 * 2 * a[0] + 2 * a[1] + a[2];
+			int search_case = 2 * 2 * a[0] + 2 * a[1] + a[2];
 
 			Node* current_node = ptr->working_list.pHead;
 
-
+			//tim node dau tien cua ngay can tim
 			while (true)
 			{
 				if (current_node->data.date == _ttoi(date))
-				{				
+				{
 					break;
 				}
 				current_node = current_node->pNext;
 			}
 
-			while (current_node != NULL || current_node->data.date != current_node->pNext->data.date)
+			do
 			{
-
-				switch (temp)
+				CString nodeCompany = CA2T(current_node->data.company.c_str());
+				CString nodeType = CA2T(current_node->data.type.c_str());
+				CString nodeBrand = CA2T(current_node->data.brand.c_str());
+				CString nodeSend;
+				switch (search_case)
 				{
-				case 0:
-				{
-					if (company.Compare(CA2T(current_node->data.company.c_str())) == 0
-						&& type.Compare(CA2T(current_node->data.type.c_str())) == 0
-						&& brand.Compare(CA2T(current_node->data.brand.c_str())) == 0)
-					{
-						mSend(_T("1"), ptr->client_socket[id]);
-						
-						CString temp = CA2T(current_node->data.company.c_str());
-						mSend(temp, ptr->client_socket[id]);
-						
-						temp = CA2T(current_node->data.type.c_str());
-						mSend(temp, ptr->client_socket[id]);
-						
-						temp = CA2T(current_node->data.brand.c_str());
-						mSend(temp, ptr->client_socket[id]);
-						
-						temp.Format(_T("%g"), current_node->data.buy);
-						mSend(temp, ptr->client_socket[id]);
-						
-						temp.Format(_T("%g"), current_node->data.sell);
-						mSend(temp, ptr->client_socket[id]);
-
-					}
-					break;
-				}
 				case 1:
 				{
+					if (company.Compare(nodeCompany) == 0
+						&& type.Compare(nodeType) == 0)
+					{
+						mSend(_T("1"), ptr->client_socket[id]);		//gui tin hieu de nhan du lieu
+
+						mSend(nodeCompany, ptr->client_socket[id]);
+						mSend(nodeType, ptr->client_socket[id]);
+						mSend(nodeBrand, ptr->client_socket[id]);
+
+						nodeSend.Format(_T("%g"), current_node->data.buy);
+						mSend(nodeSend, ptr->client_socket[id]);
+
+						nodeSend.Format(_T("%g"), current_node->data.sell);
+						mSend(nodeSend, ptr->client_socket[id]);
+					}
 					break;
 				}
 				case 2:
 				{
+					if (company.Compare(nodeCompany) == 0 && brand.Compare(nodeBrand) == 0)
+					{
+						mSend(_T("1"), ptr->client_socket[id]);		//gui tin hieu de nhan du lieu
+
+						mSend(nodeCompany, ptr->client_socket[id]);
+						mSend(nodeType, ptr->client_socket[id]);
+						mSend(nodeBrand, ptr->client_socket[id]);
+
+						nodeSend.Format(_T("%g"), current_node->data.buy);
+						mSend(nodeSend, ptr->client_socket[id]);
+
+						nodeSend.Format(_T("%g"), current_node->data.sell);
+						mSend(nodeSend, ptr->client_socket[id]);
+					}
 					break;
 				}
 				case 3:
 				{
+					if (company.Compare(nodeCompany) == 0)
+					{
+						mSend(_T("1"), ptr->client_socket[id]);		//gui tin hieu de nhan du lieu
+
+						mSend(nodeCompany, ptr->client_socket[id]);
+						mSend(nodeType, ptr->client_socket[id]);
+						mSend(nodeBrand, ptr->client_socket[id]);
+
+						nodeSend.Format(_T("%g"), current_node->data.buy);
+						mSend(nodeSend, ptr->client_socket[id]);
+
+						nodeSend.Format(_T("%g"), current_node->data.sell);
+						mSend(nodeSend, ptr->client_socket[id]);
+					}
 					break;
 				}
 				case 4:
 				{
+					if (type.Compare(nodeType) == 0
+						&& brand.Compare(nodeBrand) == 0)
+					{
+						mSend(_T("1"), ptr->client_socket[id]);		//gui tin hieu de nhan du lieu
+
+						mSend(nodeCompany, ptr->client_socket[id]);
+						mSend(nodeType, ptr->client_socket[id]);
+						mSend(nodeBrand, ptr->client_socket[id]);
+
+						nodeSend.Format(_T("%g"), current_node->data.buy);
+						mSend(nodeSend, ptr->client_socket[id]);
+
+						nodeSend.Format(_T("%g"), current_node->data.sell);
+						mSend(nodeSend, ptr->client_socket[id]);
+					}
 					break;
 				}
 				case 5:
 				{
+					if (type.Compare(nodeType) == 0)
+					{
+						mSend(_T("1"), ptr->client_socket[id]);		//gui tin hieu de nhan du lieu
+
+						mSend(nodeCompany, ptr->client_socket[id]);
+						mSend(nodeType, ptr->client_socket[id]);
+						mSend(nodeBrand, ptr->client_socket[id]);
+
+						nodeSend.Format(_T("%g"), current_node->data.buy);
+						mSend(nodeSend, ptr->client_socket[id]);
+
+						nodeSend.Format(_T("%g"), current_node->data.sell);
+						mSend(nodeSend, ptr->client_socket[id]);
+					}
 					break;
 				}
 				case 6:
 				{
+					if (brand.Compare(nodeBrand) == 0)
+					{
+						mSend(_T("1"), ptr->client_socket[id]);		//gui tin hieu de nhan du lieu
+
+						mSend(nodeCompany, ptr->client_socket[id]);
+						mSend(nodeType, ptr->client_socket[id]);
+						mSend(nodeBrand, ptr->client_socket[id]);
+
+						nodeSend.Format(_T("%g"), current_node->data.buy);
+						mSend(nodeSend, ptr->client_socket[id]);
+
+						nodeSend.Format(_T("%g"), current_node->data.sell);
+						mSend(nodeSend, ptr->client_socket[id]);
+					}
 					break;
 				}
 				case 7:
 				{
+					mSend(_T("1"), ptr->client_socket[id]);		//gui tin hieu de nhan du lieu
+
+					mSend(nodeCompany, ptr->client_socket[id]);
+					mSend(nodeType, ptr->client_socket[id]);
+					mSend(nodeBrand, ptr->client_socket[id]);
+
+					nodeSend.Format(_T("%g"), current_node->data.buy);
+					mSend(nodeSend, ptr->client_socket[id]);
+
+					nodeSend.Format(_T("%g"), current_node->data.sell);
+					mSend(nodeSend, ptr->client_socket[id]);
+
+					break;
+				}
+				default:
+				{
+					if (company.Compare(nodeCompany) == 0
+						&& type.Compare(nodeType) == 0
+						&& brand.Compare(nodeBrand) == 0)
+					{
+						mSend(_T("1"), ptr->client_socket[id]);		//gui tin hieu de nhan du lieu
+
+						mSend(nodeCompany, ptr->client_socket[id]);
+						mSend(nodeType, ptr->client_socket[id]);
+						mSend(nodeBrand, ptr->client_socket[id]);
+
+						nodeSend.Format(_T("%g"), current_node->data.buy);
+						mSend(nodeSend, ptr->client_socket[id]);
+
+						nodeSend.Format(_T("%g"), current_node->data.sell);
+						mSend(nodeSend, ptr->client_socket[id]);
+					}
 					break;
 				}
 				}
-				
-			}
-			mSend(_T("-1"), ptr->client_socket[id]);
+				current_node = current_node->pNext;
+				if (current_node == NULL)
+					break;
+			} while (break_check == false);
+			mSend(_T("-1"), ptr->client_socket[id]);		//gui tin hieu de NGUNG nhan du lieu
 			break;
 		}
+		default:
+			ptr->_list_server_log.AddString(client_name + _T(" vừa gửi một tín hiệu lạ."));
 		}
 	}
 	closesocket(ptr->client_socket[id]);
@@ -673,7 +776,7 @@ void save_data_to_file(SLList L)
 	std::ofstream output("tygia.json");
 	Node* currentNode = L.pHead;
 
-	output << "[";
+	output << "[" << std::endl;
 	while (true)
 	{
 		output << "{\"date\":\"" << currentNode->data.date << "\",\n\"value\":[" << std::endl;
@@ -711,17 +814,17 @@ void save_data_to_file(SLList L)
 	output.close();
 }
 
-size_t callback(char* buffer, size_t size, size_t num, std::string* json_data)
+size_t callback(char* buffer, size_t size, size_t num, std::string* json_data_string)
 {
 	size_t totalBytes = size * num;
-	json_data->append(buffer, totalBytes);
+	json_data_string->append(buffer, totalBytes);
 	return totalBytes;
 }
 
 UINT update_database(LPVOID Param)
 {
 	CServerDlg* ptr = (CServerDlg*)Param;
-	std::string url = "https://tygia.com/json.php?ran=0&rate=0&gold=1&bank=VIETCOM&date=20211222";
+	std::string url = "https://tygia.com/json.php?ran=0&rate=0&gold=1&bank=VIETCOM&date=now";
 	std::string json_data_string;
 	CURL* curl;
 
@@ -829,11 +932,11 @@ void CServerDlg::OnBnClickedBtnShutdown()
 void CServerDlg::OnClose()
 {
 	// TODO: Add your message handler code here and/or call default
-	/*save_data_to_file(working_list);
+	save_data_to_file(working_list);
 
 	delete_list(working_list);
 
-	delete_list(user_list);*/
+	delete_list(user_list);
 
 	CDialogEx::OnClose();
 }
