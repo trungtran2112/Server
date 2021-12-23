@@ -247,21 +247,27 @@ UINT handle_client(LPVOID param)
 
 UINT new_client(LPVOID param)
 {
+
 	CServerDlg* ptr = (CServerDlg*)param;
 	int id = ptr->id;
 	CString flag;
-	int bytes_received, msg_size;
-	char* buff;
+	int bytes_received;
 	CString client_name;
-	CString msg;
+
+	ptr->_list_server_log.AddString(_T("Hệ thống: Một client mới đã kết nối."));
 
 	while (true)
 	{
 		bytes_received = mRecv(flag, ptr->client_socket[id]);
-		if (bytes_received <= 0)
+		if (bytes_received == 0)
 		{
 			//client disconnect
-			ptr->_list_server_log.AddString(_T("Hệ thống: ") + client_name + _T(" đã ngắt kết nối."));
+			ptr->_list_server_log.AddString(_T("Hệ thống: \"") + client_name + _T("\" đã ngắt kết nối."));
+			break;
+		}
+		else if (bytes_received < 0)
+		{
+			ptr->_list_server_log.AddString(_T("Hệ thống: Có sự cố xảy ra với \"") + client_name + _T("\"."));
 			break;
 		}
 
@@ -297,8 +303,8 @@ UINT new_client(LPVOID param)
 			else//kiem duoc ten dang nhap va mat khau
 			{
 				mSend(_T("1"), ptr->client_socket[id]);
-				client_name += username;
-				ptr->_list_server_log.AddString(_T("Hệ thống: ") + client_name + _T(" đã đăng nhập."));
+				client_name = username;
+				ptr->_list_server_log.AddString(_T("Hệ thống: \"") + client_name + _T("\" đã đăng nhập."));
 			}
 			break;
 		}
@@ -338,6 +344,100 @@ UINT new_client(LPVOID param)
 			}
 			break;
 		}
+		case 2://data query
+		{
+			CString company, type, brand, date;
+			mRecv(company, ptr->client_socket[id]);
+			mRecv(type, ptr->client_socket[id]);
+			mRecv(brand, ptr->client_socket[id]);
+			mRecv(date, ptr->client_socket[id]);
+
+			int a[3] = { 0,0,0 };
+			if (company.Compare(_T("Tất cả")) == 0)
+				a[0] = 1;
+			if (type.Compare(_T("Tất cả")) == 0)
+				a[1] = 1;
+			if (brand.Compare(_T("Tất cả")) == 0)
+				a[2] = 1;
+			int temp = 2 * 2 * a[0] + 2 * a[1] + a[2];
+
+			Node* current_node = ptr->working_list.pHead;
+
+
+			while (true)
+			{
+				if (current_node->data.date == _ttoi(date))
+				{				
+					break;
+				}
+				current_node = current_node->pNext;
+			}
+
+			while (current_node != NULL || current_node->data.date != current_node->pNext->data.date)
+			{
+
+				switch (temp)
+				{
+				case 0:
+				{
+					if (company.Compare(CA2T(current_node->data.company.c_str())) == 0
+						&& type.Compare(CA2T(current_node->data.type.c_str())) == 0
+						&& brand.Compare(CA2T(current_node->data.brand.c_str())) == 0)
+					{
+						mSend(_T("1"), ptr->client_socket[id]);
+						
+						CString temp = CA2T(current_node->data.company.c_str());
+						mSend(temp, ptr->client_socket[id]);
+						
+						temp = CA2T(current_node->data.type.c_str());
+						mSend(temp, ptr->client_socket[id]);
+						
+						temp = CA2T(current_node->data.brand.c_str());
+						mSend(temp, ptr->client_socket[id]);
+						
+						temp.Format(_T("%g"), current_node->data.buy);
+						mSend(temp, ptr->client_socket[id]);
+						
+						temp.Format(_T("%g"), current_node->data.sell);
+						mSend(temp, ptr->client_socket[id]);
+
+					}
+					break;
+				}
+				case 1:
+				{
+					break;
+				}
+				case 2:
+				{
+					break;
+				}
+				case 3:
+				{
+					break;
+				}
+				case 4:
+				{
+					break;
+				}
+				case 5:
+				{
+					break;
+				}
+				case 6:
+				{
+					break;
+				}
+				case 7:
+				{
+					break;
+				}
+				}
+				
+			}
+			mSend(_T("-1"), ptr->client_socket[id]);
+			break;
+		}
 		}
 	}
 	closesocket(ptr->client_socket[id]);
@@ -374,7 +474,8 @@ void save_username_to_file(UserList L)
 	output << "[" << std::endl;
 	while (current_node != NULL)
 	{
-		output << "{\"username\":\"" << CStringA(current_node->username) << "\"," << std::endl;
+		output << "{" << std::endl;
+		output << "\"username\":\"" << CStringA(current_node->username) << "\"," << std::endl;
 		output << "\"password\":\"" << CStringA(current_node->password) << "\"" << std::endl;
 		output << "}";
 		if (current_node->pNext != NULL)
@@ -430,16 +531,16 @@ int mRecv(CString& StrRecv, SOCKET sClient)
 {
 	int buffLen;
 	int buffReceived = recv(sClient, (char*)&buffLen, sizeof(int), 0);
-	if (buffReceived < 0)
-		return NULL;
+	if (buffReceived <= 0)
+		return buffReceived;
 	char* temp = new char[buffLen + 1];
 	ZeroMemory(temp, buffLen);
 	int bytesReceived = recv(sClient, temp, buffLen, 0);
 	temp[buffLen] = '\0';
-	if (bytesReceived < 0)
+	if (bytesReceived <= 0)
 	{
 		delete[]temp;
-		return NULL;
+		return bytesReceived;
 	}
 	else
 	{
@@ -454,7 +555,7 @@ int mRecv(CString& StrRecv, SOCKET sClient)
 		}
 		MultiByteToWideChar(CP_UTF8, 0, temp, strlen(temp), wstr, wchar_num);
 		wstr[wchar_num] = '\0';
-		StrRecv += wstr;
+		StrRecv = wstr;
 		delete[] wstr;
 		delete[] temp;
 		return bytesReceived;
@@ -540,6 +641,19 @@ bool load_data(SLList& L)
 	return TRUE;
 }
 
+void delete_list(UserList& L)
+{
+	if (L.pHead == NULL)
+		return;
+	user_node* current_node = L.pHead, * temp = NULL;
+	while (current_node != NULL)
+	{
+		temp = current_node;
+		current_node = current_node->pNext;
+		delete temp;
+	}
+}
+
 void delete_list(SLList& L)
 {
 	if (L.pHead == NULL)
@@ -607,7 +721,7 @@ size_t callback(char* buffer, size_t size, size_t num, std::string* json_data)
 UINT update_database(LPVOID Param)
 {
 	CServerDlg* ptr = (CServerDlg*)Param;
-	std::string url = "https://tygia.com/json.php?ran=0&rate=0&gold=1&bank=VIETCOM&date=now";
+	std::string url = "https://tygia.com/json.php?ran=0&rate=0&gold=1&bank=VIETCOM&date=20211222";
 	std::string json_data_string;
 	CURL* curl;
 
@@ -679,7 +793,7 @@ UINT update_database(LPVOID Param)
 			}
 
 			//thêm những node dữ liệu mới
-			for (int i = 0; i < json_data["golds"][0]["value"].size(); i++)
+			for (unsigned int i = 0; i < json_data["golds"][0]["value"].size(); i++)
 			{
 				Node* newNode = add_head(ptr->working_list);
 
@@ -715,11 +829,11 @@ void CServerDlg::OnBnClickedBtnShutdown()
 void CServerDlg::OnClose()
 {
 	// TODO: Add your message handler code here and/or call default
-	save_data_to_file(working_list);
+	/*save_data_to_file(working_list);
 
 	delete_list(working_list);
 
-
+	delete_list(user_list);*/
 
 	CDialogEx::OnClose();
 }
