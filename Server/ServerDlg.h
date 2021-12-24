@@ -65,14 +65,14 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
 
-//new function
+	//new function
 public:
 	afx_msg void OnBnClickedBtnListen();
 	afx_msg void OnBnClickedBtnShutdown();
 	afx_msg void OnClose();
 	CListBox _list_server_log;
 
-//newvariables
+	//newvariables
 public:
 	CWinThread* update_database_thread;
 	SLList working_list;
@@ -87,6 +87,6 @@ public:
 	CWinThread* client_thread[100];
 
 
-	
+
 };
 #endif

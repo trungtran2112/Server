@@ -954,16 +954,19 @@ void CServerDlg::OnBnClickedBtnShutdown()
 {
 	// TODO: Add your control notification handler code here
 
+	
 }
 
 void CServerDlg::OnClose()
 {
+	
 	// TODO: Add your message handler code here and/or call default
+	/*for (int i = 0; i < id; i++)
+	{
+		closesocket(client_socket[i]);
+	}*/
 	save_data_to_file(working_list);
-
 	delete_list(working_list);
-
 	delete_list(user_list);
-
 	CDialogEx::OnClose();
 }
