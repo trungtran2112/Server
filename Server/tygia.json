@@ -1,5 +1,2322 @@
 [
   {
+    "date": "20211224",
+    "value": [
+      {
+        "buy": "0.09",
+        "sell": "0.09",
+        "company": "1Coin",
+        "brand": "Jasmy",
+        "type": "JASMY",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.09",
+        "sell": "0.09",
+        "company": "1Coin",
+        "brand": "HyperDAO",
+        "type": "HDAO",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.11",
+        "sell": "0.11",
+        "company": "1Coin",
+        "brand": "Star Atlas",
+        "type": "ATLAS",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.14",
+        "sell": "0.14",
+        "company": "1Coin",
+        "brand": "NEM",
+        "type": "XEM",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.16",
+        "sell": "0.16",
+        "company": "1Coin",
+        "brand": "IoTeX (ERC-20)",
+        "type": "IOTX",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.22",
+        "sell": "0.22",
+        "company": "1Coin",
+        "brand": "Bifrost (BFC)",
+        "type": "BFC",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.23",
+        "sell": "0.23",
+        "company": "1Coin",
+        "brand": "yOUcash",
+        "type": "YOUC",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.24",
+        "sell": "0.24",
+        "company": "1Coin",
+        "brand": "Velas",
+        "type": "VLX",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.25",
+        "sell": "0.25",
+        "company": "1Coin",
+        "brand": "Ardor",
+        "type": "ARDR",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.26",
+        "sell": "0.26",
+        "company": "1Coin",
+        "brand": "Harmony",
+        "type": "ONE",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.27",
+        "sell": "0.27",
+        "company": "1Coin",
+        "brand": "e-Radix",
+        "type": "EXRD",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.3",
+        "sell": "0.3",
+        "company": "1Coin",
+        "brand": "HEX",
+        "type": "HEX",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.33",
+        "sell": "0.33",
+        "company": "1Coin",
+        "brand": "Hedera",
+        "type": "HBAR",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.36",
+        "sell": "0.36",
+        "company": "1Coin",
+        "brand": "Humanscape",
+        "type": "HUM",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.36",
+        "sell": "0.36",
+        "company": "1Coin",
+        "brand": "DigitalBits",
+        "type": "XDB",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.39",
+        "sell": "0.39",
+        "company": "1Coin",
+        "brand": "Mdex",
+        "type": "MDX",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.4",
+        "sell": "0.4",
+        "company": "1Coin",
+        "brand": "aelf",
+        "type": "ELF",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.48",
+        "sell": "0.48",
+        "company": "1Coin",
+        "brand": "Powerledger",
+        "type": "POWR",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.5",
+        "sell": "0.5",
+        "company": "1Coin",
+        "brand": "Golem",
+        "type": "GNT",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.51",
+        "sell": "0.51",
+        "company": "1Coin",
+        "brand": "Gala",
+        "type": "GALA",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.52",
+        "sell": "0.52",
+        "company": "1Coin",
+        "brand": "WAX",
+        "type": "WAXP",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.54",
+        "sell": "0.54",
+        "company": "1Coin",
+        "brand": "Polymath",
+        "type": "POLY",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.59",
+        "sell": "0.59",
+        "company": "1Coin",
+        "brand": "Orbit Chain",
+        "type": "ORC",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.61",
+        "sell": "0.61",
+        "company": "1Coin",
+        "brand": "SwissBorg",
+        "type": "CHSB",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.61",
+        "sell": "0.61",
+        "company": "1Coin",
+        "brand": "Crypto.com Coin",
+        "type": "CRO",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.67",
+        "sell": "0.67",
+        "company": "1Coin",
+        "brand": "Dusk Network",
+        "type": "DUSK",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.68",
+        "sell": "0.68",
+        "company": "1Coin",
+        "brand": "Ren",
+        "type": "REN",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.7",
+        "sell": "0.7",
+        "company": "1Coin",
+        "brand": "Keep Network",
+        "type": "KEEP",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.74",
+        "sell": "0.74",
+        "company": "1Coin",
+        "brand": "The Graph",
+        "type": "GRT",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.74",
+        "sell": "0.74",
+        "company": "1Coin",
+        "brand": "Ontology",
+        "type": "ONT",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.74",
+        "sell": "0.74",
+        "company": "1Coin",
+        "brand": "Chromia",
+        "type": "CHR",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.77",
+        "sell": "0.77",
+        "company": "1Coin",
+        "brand": "HedgeTrade",
+        "type": "HEDG",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.77",
+        "sell": "0.77",
+        "company": "1Coin",
+        "brand": "Alpha Finance Lab",
+        "type": "ALPHA",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.78",
+        "sell": "0.78",
+        "company": "1Coin",
+        "brand": "Syscoin",
+        "type": "SYS",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.78",
+        "sell": "0.78",
+        "company": "1Coin",
+        "brand": "Cartesi",
+        "type": "CTSI",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.81",
+        "sell": "0.81",
+        "company": "1Coin",
+        "brand": "Trust Wallet Token",
+        "type": "TWT",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.81",
+        "sell": "0.81",
+        "company": "1Coin",
+        "brand": "NuCypher",
+        "type": "NU",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.82",
+        "sell": "0.82",
+        "company": "1Coin",
+        "brand": "CEEK VR",
+        "type": "CEEK",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.84",
+        "sell": "0.84",
+        "company": "1Coin",
+        "brand": "Ontology Gas",
+        "type": "ONG",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.94",
+        "sell": "0.94",
+        "company": "1Coin",
+        "brand": "Function X",
+        "type": "FX",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.95",
+        "sell": "0.95",
+        "company": "1Coin",
+        "brand": "WOO Network",
+        "type": "WOO",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.95",
+        "sell": "0.95",
+        "company": "1Coin",
+        "brand": "Ocean Protocol",
+        "type": "OCEAN",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.97",
+        "sell": "0.97",
+        "company": "1Coin",
+        "brand": "XRP",
+        "type": "XRP",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.97",
+        "sell": "0.97",
+        "company": "1Coin",
+        "brand": "Ampleforth",
+        "type": "AMPL",
+        "date": "20211224"
+      },
+      {
+        "buy": "0.99",
+        "sell": "0.99",
+        "company": "1Coin",
+        "brand": "Paxos Standard",
+        "type": "PAX",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.03",
+        "sell": "1.03",
+        "company": "1Coin",
+        "brand": "Tribe",
+        "type": "TRIBE",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.11",
+        "sell": "1.11",
+        "company": "1Coin",
+        "brand": "OriginTrail",
+        "type": "TRAC",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.13",
+        "sell": "1.13",
+        "company": "1Coin",
+        "brand": "Pundi X[new]",
+        "type": "PUNDIX",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.16",
+        "sell": "1.16",
+        "company": "1Coin",
+        "brand": "BORA",
+        "type": "BORA",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.2",
+        "sell": "1.2",
+        "company": "1Coin",
+        "brand": "BakeryToken",
+        "type": "BAKE",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.22",
+        "sell": "1.22",
+        "company": "1Coin",
+        "brand": "WazirX",
+        "type": "WRX",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.29",
+        "sell": "1.29",
+        "company": "1Coin",
+        "brand": "IOTA",
+        "type": "MIOTA",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.31",
+        "sell": "1.31",
+        "company": "1Coin",
+        "brand": "Pirate Chain",
+        "type": "ARRR",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.32",
+        "sell": "1.32",
+        "company": "1Coin",
+        "brand": "SuperFarm",
+        "type": "SUPER",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.33",
+        "sell": "1.33",
+        "company": "1Coin",
+        "brand": "Klaytn",
+        "type": "KLAY",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.33",
+        "sell": "1.33",
+        "company": "1Coin",
+        "brand": "Biswap",
+        "type": "BSW",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.34",
+        "sell": "1.34",
+        "company": "1Coin",
+        "brand": "Basic Attention Token",
+        "type": "BAT",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.36",
+        "sell": "1.36",
+        "company": "1Coin",
+        "brand": "Bitcoin Diamond",
+        "type": "BCD",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.43",
+        "sell": "1.43",
+        "company": "1Coin",
+        "brand": "GlitzKoin",
+        "type": "GTN",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.43",
+        "sell": "1.43",
+        "company": "1Coin",
+        "brand": "Dvision Network",
+        "type": "DVI",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.45",
+        "sell": "1.45",
+        "company": "1Coin",
+        "brand": "Cardano",
+        "type": "ADA",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.47",
+        "sell": "1.47",
+        "company": "1Coin",
+        "brand": "Algorand",
+        "type": "ALGO",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.5",
+        "sell": "1.5",
+        "company": "1Coin",
+        "brand": "ICON",
+        "type": "ICX",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.53",
+        "sell": "1.53",
+        "company": "1Coin",
+        "brand": "BabySwap",
+        "type": "BABY",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.55",
+        "sell": "1.55",
+        "company": "1Coin",
+        "brand": "Unibright",
+        "type": "UBT",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.57",
+        "sell": "1.57",
+        "company": "1Coin",
+        "brand": "Stratis",
+        "type": "STRAX",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.68",
+        "sell": "1.68",
+        "company": "1Coin",
+        "brand": "Hive",
+        "type": "HIVE",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.69",
+        "sell": "1.69",
+        "company": "1Coin",
+        "brand": "Ultra",
+        "type": "UOS",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.69",
+        "sell": "1.69",
+        "company": "1Coin",
+        "brand": "PlayDapp",
+        "type": "PLA",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.69",
+        "sell": "1.69",
+        "company": "1Coin",
+        "brand": "Audius",
+        "type": "AUDIO",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.72",
+        "sell": "1.72",
+        "company": "1Coin",
+        "brand": "Flux",
+        "type": "FLUX",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.81",
+        "sell": "1.81",
+        "company": "1Coin",
+        "brand": "Akash Network",
+        "type": "AKT",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.87",
+        "sell": "1.87",
+        "company": "1Coin",
+        "brand": "Hathor",
+        "type": "HTR",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.89",
+        "sell": "1.89",
+        "company": "1Coin",
+        "brand": "Fantom",
+        "type": "FTM",
+        "date": "20211224"
+      },
+      {
+        "buy": "1.91",
+        "sell": "1.91",
+        "company": "1Coin",
+        "brand": "BitDAO",
+        "type": "BIT",
+        "date": "20211224"
+      },
+      {
+        "buy": "2.03",
+        "sell": "2.03",
+        "company": "1Coin",
+        "brand": "Storj",
+        "type": "STORJ",
+        "date": "20211224"
+      },
+      {
+        "buy": "2.15",
+        "sell": "2.15",
+        "company": "1Coin",
+        "brand": "Wrapped NCG (Nine Chronicles Gold)",
+        "type": "WNCG",
+        "date": "20211224"
+      },
+      {
+        "buy": "2.23",
+        "sell": "2.23",
+        "company": "1Coin",
+        "brand": "MX Token",
+        "type": "MX",
+        "date": "20211224"
+      },
+      {
+        "buy": "2.32",
+        "sell": "2.32",
+        "company": "1Coin",
+        "brand": "Loopring",
+        "type": "LRC",
+        "date": "20211224"
+      },
+      {
+        "buy": "2.39",
+        "sell": "2.39",
+        "company": "1Coin",
+        "brand": "Stacks",
+        "type": "STX",
+        "date": "20211224"
+      },
+      {
+        "buy": "2.4",
+        "sell": "2.4",
+        "company": "1Coin",
+        "brand": "Mines of Dalarnia",
+        "type": "DAR",
+        "date": "20211224"
+      },
+      {
+        "buy": "2.42",
+        "sell": "2.42",
+        "company": "1Coin",
+        "brand": "Nexo",
+        "type": "NEXO",
+        "date": "20211224"
+      },
+      {
+        "buy": "2.47",
+        "sell": "2.47",
+        "company": "1Coin",
+        "brand": "Creditcoin",
+        "type": "CTC",
+        "date": "20211224"
+      },
+      {
+        "buy": "2.53",
+        "sell": "2.53",
+        "company": "1Coin",
+        "brand": "Coin98",
+        "type": "C98",
+        "date": "20211224"
+      },
+      {
+        "buy": "2.55",
+        "sell": "2.55",
+        "company": "1Coin",
+        "brand": "Phantasma",
+        "type": "SOUL",
+        "date": "20211224"
+      },
+      {
+        "buy": "2.57",
+        "sell": "2.57",
+        "company": "1Coin",
+        "brand": "Mirror Protocol",
+        "type": "MIR",
+        "date": "20211224"
+      },
+      {
+        "buy": "2.6",
+        "sell": "2.6",
+        "company": "1Coin",
+        "brand": "Lisk",
+        "type": "LSK",
+        "date": "20211224"
+      },
+      {
+        "buy": "2.61",
+        "sell": "2.61",
+        "company": "1Coin",
+        "brand": "Polygon",
+        "type": "MATIC",
+        "date": "20211224"
+      },
+      {
+        "buy": "2.62",
+        "sell": "2.62",
+        "company": "1Coin",
+        "brand": "JOE",
+        "type": "JOE",
+        "date": "20211224"
+      },
+      {
+        "buy": "2.75",
+        "sell": "2.75",
+        "company": "1Coin",
+        "brand": "1inch",
+        "type": "1INCH",
+        "date": "20211224"
+      },
+      {
+        "buy": "2.8",
+        "sell": "2.8",
+        "company": "1Coin",
+        "brand": "Polkastarter",
+        "type": "POLS",
+        "date": "20211224"
+      },
+      {
+        "buy": "2.91",
+        "sell": "2.91",
+        "company": "1Coin",
+        "brand": "Enjin Coin",
+        "type": "ENJ",
+        "date": "20211224"
+      },
+      {
+        "buy": "3.21",
+        "sell": "3.21",
+        "company": "1Coin",
+        "brand": "iExec RLC",
+        "type": "RLC",
+        "date": "20211224"
+      },
+      {
+        "buy": "3.23",
+        "sell": "3.23",
+        "company": "1Coin",
+        "brand": "Voyager Token",
+        "type": "VGX",
+        "date": "20211224"
+      },
+      {
+        "buy": "3.31",
+        "sell": "3.31",
+        "company": "1Coin",
+        "brand": "DeFiChain",
+        "type": "DFI",
+        "date": "20211224"
+      },
+      {
+        "buy": "3.47",
+        "sell": "3.47",
+        "company": "1Coin",
+        "brand": "EOS",
+        "type": "EOS",
+        "date": "20211224"
+      },
+      {
+        "buy": "3.58",
+        "sell": "3.58",
+        "company": "1Coin",
+        "brand": "Bancor Network Token",
+        "type": "BNT",
+        "date": "20211224"
+      },
+      {
+        "buy": "3.68",
+        "sell": "3.68",
+        "company": "1Coin",
+        "brand": "Mina",
+        "type": "MINA",
+        "date": "20211224"
+      },
+      {
+        "buy": "3.69",
+        "sell": "3.69",
+        "company": "1Coin",
+        "brand": "UNUS SED LEO",
+        "type": "LEO",
+        "date": "20211224"
+      },
+      {
+        "buy": "3.71",
+        "sell": "3.71",
+        "company": "1Coin",
+        "brand": "TON Coin",
+        "type": "TONCOIN",
+        "date": "20211224"
+      },
+      {
+        "buy": "3.72",
+        "sell": "3.72",
+        "company": "1Coin",
+        "brand": "Nano",
+        "type": "NANO",
+        "date": "20211224"
+      },
+      {
+        "buy": "3.77",
+        "sell": "3.77",
+        "company": "1Coin",
+        "brand": "Braintrust",
+        "type": "BTRST",
+        "date": "20211224"
+      },
+      {
+        "buy": "3.78",
+        "sell": "3.78",
+        "company": "1Coin",
+        "brand": "Decentraland",
+        "type": "MANA",
+        "date": "20211224"
+      },
+      {
+        "buy": "3.8",
+        "sell": "3.8",
+        "company": "1Coin",
+        "brand": "Anchor Protocol",
+        "type": "ANC",
+        "date": "20211224"
+      },
+      {
+        "buy": "3.87",
+        "sell": "3.87",
+        "company": "1Coin",
+        "brand": "Boba Network",
+        "type": "BOBA",
+        "date": "20211224"
+      },
+      {
+        "buy": "3.91",
+        "sell": "3.91",
+        "company": "1Coin",
+        "brand": "Kava",
+        "type": "KAVA",
+        "date": "20211224"
+      },
+      {
+        "buy": "3.92",
+        "sell": "3.92",
+        "company": "1Coin",
+        "brand": "Sologenic",
+        "type": "SOLO",
+        "date": "20211224"
+      },
+      {
+        "buy": "3.94",
+        "sell": "3.94",
+        "company": "1Coin",
+        "brand": "Serum",
+        "type": "SRM",
+        "date": "20211224"
+      },
+      {
+        "buy": "4.08",
+        "sell": "4.08",
+        "company": "1Coin",
+        "brand": "Wilder World",
+        "type": "WILD",
+        "date": "20211224"
+      },
+      {
+        "buy": "4.14",
+        "sell": "4.14",
+        "company": "1Coin",
+        "brand": "BICONOMY (BICO)",
+        "type": "BICO",
+        "date": "20211224"
+      },
+      {
+        "buy": "4.75",
+        "sell": "4.75",
+        "company": "1Coin",
+        "brand": "Celo",
+        "type": "CGLD",
+        "date": "20211224"
+      },
+      {
+        "buy": "4.78",
+        "sell": "4.78",
+        "company": "1Coin",
+        "brand": "Tezos",
+        "type": "XTZ",
+        "date": "20211224"
+      },
+      {
+        "buy": "4.79",
+        "sell": "4.79",
+        "company": "1Coin",
+        "brand": "CRYPTO20",
+        "type": "C20",
+        "date": "20211224"
+      },
+      {
+        "buy": "4.82",
+        "sell": "4.82",
+        "company": "1Coin",
+        "brand": "THETA",
+        "type": "THETA",
+        "date": "20211224"
+      },
+      {
+        "buy": "4.84",
+        "sell": "4.84",
+        "company": "1Coin",
+        "brand": "DAO Maker",
+        "type": "DAO",
+        "date": "20211224"
+      },
+      {
+        "buy": "4.84",
+        "sell": "4.84",
+        "company": "1Coin",
+        "brand": "Bonfida",
+        "type": "FIDA",
+        "date": "20211224"
+      },
+      {
+        "buy": "4.87",
+        "sell": "4.87",
+        "company": "1Coin",
+        "brand": "Immutable X",
+        "type": "IMX",
+        "date": "20211224"
+      },
+      {
+        "buy": "5.12",
+        "sell": "5.12",
+        "company": "1Coin",
+        "brand": "Curve DAO Token",
+        "type": "CRV",
+        "date": "20211224"
+      },
+      {
+        "buy": "5.17",
+        "sell": "5.17",
+        "company": "1Coin",
+        "brand": "KILT Protocol",
+        "type": "KILT",
+        "date": "20211224"
+      },
+      {
+        "buy": "5.48",
+        "sell": "5.48",
+        "company": "1Coin",
+        "brand": "Secret",
+        "type": "SCRT",
+        "date": "20211224"
+      },
+      {
+        "buy": "5.65",
+        "sell": "5.65",
+        "company": "1Coin",
+        "brand": "The Transfer Token",
+        "type": "TTT",
+        "date": "20211224"
+      },
+      {
+        "buy": "5.76",
+        "sell": "5.76",
+        "company": "1Coin",
+        "brand": "Yield Guild Games",
+        "type": "YGG",
+        "date": "20211224"
+      },
+      {
+        "buy": "5.77",
+        "sell": "5.77",
+        "company": "1Coin",
+        "brand": "Band Protocol",
+        "type": "BAND",
+        "date": "20211224"
+      },
+      {
+        "buy": "5.8",
+        "sell": "5.8",
+        "company": "1Coin",
+        "brand": "KOK",
+        "type": "KOK",
+        "date": "20211224"
+      },
+      {
+        "buy": "6.14",
+        "sell": "6.14",
+        "company": "1Coin",
+        "brand": "Synthetix Network Token",
+        "type": "SNX",
+        "date": "20211224"
+      },
+      {
+        "buy": "6.18",
+        "sell": "6.18",
+        "company": "1Coin",
+        "brand": "MOBOX",
+        "type": "MBOX",
+        "date": "20211224"
+      },
+      {
+        "buy": "6.19",
+        "sell": "6.19",
+        "company": "1Coin",
+        "brand": "Persistence",
+        "type": "XPRT",
+        "date": "20211224"
+      },
+      {
+        "buy": "6.25",
+        "sell": "6.25",
+        "company": "1Coin",
+        "brand": "GateToken",
+        "type": "GT",
+        "date": "20211224"
+      },
+      {
+        "buy": "6.26",
+        "sell": "6.26",
+        "company": "1Coin",
+        "brand": "The Sandbox",
+        "type": "SAND",
+        "date": "20211224"
+      },
+      {
+        "buy": "6.4",
+        "sell": "6.4",
+        "company": "1Coin",
+        "brand": "Render Token",
+        "type": "RNDR",
+        "date": "20211224"
+      },
+      {
+        "buy": "6.86",
+        "sell": "6.86",
+        "company": "1Coin",
+        "brand": "Alitas",
+        "type": "ALT",
+        "date": "20211224"
+      },
+      {
+        "buy": "6.95",
+        "sell": "6.95",
+        "company": "1Coin",
+        "brand": "OMG Network",
+        "type": "OMG",
+        "date": "20211224"
+      },
+      {
+        "buy": "7.12",
+        "sell": "7.12",
+        "company": "1Coin",
+        "brand": "Merit Circle",
+        "type": "MC",
+        "date": "20211224"
+      },
+      {
+        "buy": "7.23",
+        "sell": "7.23",
+        "company": "1Coin",
+        "brand": "SushiSwap",
+        "type": "SUSHI",
+        "date": "20211224"
+      },
+      {
+        "buy": "7.84",
+        "sell": "7.84",
+        "company": "1Coin",
+        "brand": "DeversiFi",
+        "type": "DVF",
+        "date": "20211224"
+      },
+      {
+        "buy": "7.85",
+        "sell": "7.85",
+        "company": "1Coin",
+        "brand": "Raydium",
+        "type": "RAY",
+        "date": "20211224"
+      },
+      {
+        "buy": "7.92",
+        "sell": "7.92",
+        "company": "1Coin",
+        "brand": "THORChain",
+        "type": "RUNE",
+        "date": "20211224"
+      },
+      {
+        "buy": "8.69",
+        "sell": "8.69",
+        "company": "1Coin",
+        "brand": "Injective Protocol",
+        "type": "INJ",
+        "date": "20211224"
+      },
+      {
+        "buy": "8.75",
+        "sell": "8.75",
+        "company": "1Coin",
+        "brand": "dYdX",
+        "type": "DYDX",
+        "date": "20211224"
+      },
+      {
+        "buy": "9.26",
+        "sell": "9.26",
+        "company": "1Coin",
+        "brand": "Flow",
+        "type": "FLOW",
+        "date": "20211224"
+      },
+      {
+        "buy": "9.42",
+        "sell": "9.42",
+        "company": "1Coin",
+        "brand": "Perpetual Protocol",
+        "type": "PERP",
+        "date": "20211224"
+      },
+      {
+        "buy": "9.62",
+        "sell": "9.62",
+        "company": "1Coin",
+        "brand": "Sovryn",
+        "type": "SOV",
+        "date": "20211224"
+      },
+      {
+        "buy": "9.81",
+        "sell": "9.81",
+        "company": "1Coin",
+        "brand": "UMA",
+        "type": "UMA",
+        "date": "20211224"
+      },
+      {
+        "buy": "9.99",
+        "sell": "9.99",
+        "company": "1Coin",
+        "brand": "Huobi Token",
+        "type": "HT",
+        "date": "20211224"
+      },
+      {
+        "buy": "10.21",
+        "sell": "10.21",
+        "company": "1Coin",
+        "brand": "Energy Web Token",
+        "type": "EWT",
+        "date": "20211224"
+      },
+      {
+        "buy": "10.26",
+        "sell": "10.26",
+        "company": "1Coin",
+        "brand": "Qtum",
+        "type": "QTUM",
+        "date": "20211224"
+      },
+      {
+        "buy": "10.37",
+        "sell": "10.37",
+        "company": "1Coin",
+        "brand": "Radicle",
+        "type": "RAD",
+        "date": "20211224"
+      },
+      {
+        "buy": "10.78",
+        "sell": "10.78",
+        "company": "1Coin",
+        "brand": "Aragon",
+        "type": "ANT",
+        "date": "20211224"
+      },
+      {
+        "buy": "10.82",
+        "sell": "10.82",
+        "company": "1Coin",
+        "brand": "MobileCoin",
+        "type": "MOB",
+        "date": "20211224"
+      },
+      {
+        "buy": "10.86",
+        "sell": "10.86",
+        "company": "1Coin",
+        "brand": "Seedify.fund",
+        "type": "SFUND",
+        "date": "20211224"
+      },
+      {
+        "buy": "11.47",
+        "sell": "11.47",
+        "company": "1Coin",
+        "brand": "WEMIX",
+        "type": "WEMIX",
+        "date": "20211224"
+      },
+      {
+        "buy": "11.71",
+        "sell": "11.71",
+        "company": "1Coin",
+        "brand": "Venus BNB",
+        "type": "vBNB",
+        "date": "20211224"
+      },
+      {
+        "buy": "11.76",
+        "sell": "11.76",
+        "company": "1Coin",
+        "brand": "Mask Network",
+        "type": "MASK",
+        "date": "20211224"
+      },
+      {
+        "buy": "11.88",
+        "sell": "11.88",
+        "company": "1Coin",
+        "brand": "Kadena",
+        "type": "KDA",
+        "date": "20211224"
+      },
+      {
+        "buy": "12.22",
+        "sell": "12.22",
+        "company": "1Coin",
+        "brand": "PancakeSwap",
+        "type": "CAKE",
+        "date": "20211224"
+      },
+      {
+        "buy": "13.25",
+        "sell": "13.25",
+        "company": "1Coin",
+        "brand": "Prometeus",
+        "type": "PROM",
+        "date": "20211224"
+      },
+      {
+        "buy": "14.15",
+        "sell": "14.15",
+        "company": "1Coin",
+        "brand": "NEAR Protocol",
+        "type": "NEAR",
+        "date": "20211224"
+      },
+      {
+        "buy": "14.43",
+        "sell": "14.43",
+        "company": "1Coin",
+        "brand": "MyNeighborAlice",
+        "type": "ALICE",
+        "date": "20211224"
+      },
+      {
+        "buy": "15.98",
+        "sell": "15.98",
+        "company": "1Coin",
+        "brand": "MCO",
+        "type": "MCO",
+        "date": "20211224"
+      },
+      {
+        "buy": "16.11",
+        "sell": "16.11",
+        "company": "1Coin",
+        "brand": "Venus",
+        "type": "XVS",
+        "date": "20211224"
+      },
+      {
+        "buy": "16.42",
+        "sell": "16.42",
+        "company": "1Coin",
+        "brand": "Waves",
+        "type": "WAVES",
+        "date": "20211224"
+      },
+      {
+        "buy": "16.74",
+        "sell": "16.74",
+        "company": "1Coin",
+        "brand": "Badger DAO",
+        "type": "BADGER",
+        "date": "20211224"
+      },
+      {
+        "buy": "17.59",
+        "sell": "17.59",
+        "company": "1Coin",
+        "brand": "Uniswap",
+        "type": "UNI",
+        "date": "20211224"
+      },
+      {
+        "buy": "18.2",
+        "sell": "18.2",
+        "company": "1Coin",
+        "brand": "REPv2",
+        "type": "REPV2",
+        "date": "20211224"
+      },
+      {
+        "buy": "18.2",
+        "sell": "18.2",
+        "company": "1Coin",
+        "brand": "Augur",
+        "type": "REP",
+        "date": "20211224"
+      },
+      {
+        "buy": "19.97",
+        "sell": "19.97",
+        "company": "1Coin",
+        "brand": "Anyswap",
+        "type": "ANY",
+        "date": "20211224"
+      },
+      {
+        "buy": "20.16",
+        "sell": "20.16",
+        "company": "1Coin",
+        "brand": "LUKSO",
+        "type": "LYXe",
+        "date": "20211224"
+      },
+      {
+        "buy": "20.63",
+        "sell": "20.63",
+        "company": "1Coin",
+        "brand": "Frax Share",
+        "type": "FXS",
+        "date": "20211224"
+      },
+      {
+        "buy": "22.05",
+        "sell": "22.05",
+        "company": "1Coin",
+        "brand": "Chainlink",
+        "type": "LINK",
+        "date": "20211224"
+      },
+      {
+        "buy": "22.8",
+        "sell": "22.8",
+        "company": "1Coin",
+        "brand": "Vulcan Forged PYR",
+        "type": "PYR",
+        "date": "20211224"
+      },
+      {
+        "buy": "23.45",
+        "sell": "23.45",
+        "company": "1Coin",
+        "brand": "KuCoin Token",
+        "type": "KCS",
+        "date": "20211224"
+      },
+      {
+        "buy": "25.61",
+        "sell": "25.61",
+        "company": "1Coin",
+        "brand": "Bitcoin Standard Hashrate Token",
+        "type": "BTCST",
+        "date": "20211224"
+      },
+      {
+        "buy": "26.98",
+        "sell": "26.98",
+        "company": "1Coin",
+        "brand": "Rari Governance Token",
+        "type": "RGT",
+        "date": "20211224"
+      },
+      {
+        "buy": "27.54",
+        "sell": "27.54",
+        "company": "1Coin",
+        "brand": "Internet Computer",
+        "type": "ICP",
+        "date": "20211224"
+      },
+      {
+        "buy": "28.11",
+        "sell": "28.11",
+        "company": "1Coin",
+        "brand": "Cosmos",
+        "type": "ATOM",
+        "date": "20211224"
+      },
+      {
+        "buy": "29.14",
+        "sell": "29.14",
+        "company": "1Coin",
+        "brand": "Polkadot",
+        "type": "DOT",
+        "date": "20211224"
+      },
+      {
+        "buy": "29.81",
+        "sell": "29.81",
+        "company": "1Coin",
+        "brand": "Neo",
+        "type": "NEO",
+        "date": "20211224"
+      },
+      {
+        "buy": "31.67",
+        "sell": "31.67",
+        "company": "1Coin",
+        "brand": "OKB",
+        "type": "OKB",
+        "date": "20211224"
+      },
+      {
+        "buy": "33.88",
+        "sell": "33.88",
+        "company": "1Coin",
+        "brand": "Numeraire",
+        "type": "NMR",
+        "date": "20211224"
+      },
+      {
+        "buy": "37.05",
+        "sell": "37.05",
+        "company": "1Coin",
+        "brand": "Filecoin",
+        "type": "FIL",
+        "date": "20211224"
+      },
+      {
+        "buy": "37.78",
+        "sell": "37.78",
+        "company": "1Coin",
+        "brand": "Ethereum Classic",
+        "type": "ETC",
+        "date": "20211224"
+      },
+      {
+        "buy": "38.75",
+        "sell": "38.75",
+        "company": "1Coin",
+        "brand": "RMRK",
+        "type": "RMRK",
+        "date": "20211224"
+      },
+      {
+        "buy": "39.07",
+        "sell": "39.07",
+        "company": "1Coin",
+        "brand": "Helium",
+        "type": "HNT",
+        "date": "20211224"
+      },
+      {
+        "buy": "42.12",
+        "sell": "42.12",
+        "company": "1Coin",
+        "brand": "Convex Finance",
+        "type": "CVX",
+        "date": "20211224"
+      },
+      {
+        "buy": "43.07",
+        "sell": "43.07",
+        "company": "1Coin",
+        "brand": "FTX Token",
+        "type": "FTT",
+        "date": "20211224"
+      },
+      {
+        "buy": "44.88",
+        "sell": "44.88",
+        "company": "1Coin",
+        "brand": "Livepeer",
+        "type": "LPT",
+        "date": "20211224"
+      },
+      {
+        "buy": "45.52",
+        "sell": "45.52",
+        "company": "1Coin",
+        "brand": "Bitcoin Gold",
+        "type": "BTG",
+        "date": "20211224"
+      },
+      {
+        "buy": "45.92",
+        "sell": "45.92",
+        "company": "1Coin",
+        "brand": "Rocket Pool",
+        "type": "RPL",
+        "date": "20211224"
+      },
+      {
+        "buy": "47.46",
+        "sell": "47.46",
+        "company": "1Coin",
+        "brand": "Ethereum Name Service",
+        "type": "ENS",
+        "date": "20211224"
+      },
+      {
+        "buy": "56.59",
+        "sell": "56.59",
+        "company": "1Coin",
+        "brand": "Arweave",
+        "type": "AR",
+        "date": "20211224"
+      },
+      {
+        "buy": "71.07",
+        "sell": "71.07",
+        "company": "1Coin",
+        "brand": "Horizen",
+        "type": "ZEN",
+        "date": "20211224"
+      },
+      {
+        "buy": "76.91",
+        "sell": "76.91",
+        "company": "1Coin",
+        "brand": "Decred",
+        "type": "DCR",
+        "date": "20211224"
+      },
+      {
+        "buy": "86.9",
+        "sell": "86.9",
+        "company": "1Coin",
+        "brand": "Counos X",
+        "type": "CCXX",
+        "date": "20211224"
+      },
+      {
+        "buy": "100.15",
+        "sell": "100.15",
+        "company": "1Coin",
+        "brand": "Terra",
+        "type": "LUNA",
+        "date": "20211224"
+      },
+      {
+        "buy": "105.78",
+        "sell": "105.78",
+        "company": "1Coin",
+        "brand": "Chia Network",
+        "type": "XCH",
+        "date": "20211224"
+      },
+      {
+        "buy": "107.15",
+        "sell": "107.15",
+        "company": "1Coin",
+        "brand": "Axie Infinity",
+        "type": "AXS",
+        "date": "20211224"
+      },
+      {
+        "buy": "111.94",
+        "sell": "111.94",
+        "company": "1Coin",
+        "brand": "Veritaseum",
+        "type": "VERI",
+        "date": "20211224"
+      },
+      {
+        "buy": "122.19",
+        "sell": "122.19",
+        "company": "1Coin",
+        "brand": "Avalanche",
+        "type": "AVAX",
+        "date": "20211224"
+      },
+      {
+        "buy": "130.29",
+        "sell": "130.29",
+        "company": "1Coin",
+        "brand": "Bitcoin SV",
+        "type": "BSV",
+        "date": "20211224"
+      },
+      {
+        "buy": "136.88",
+        "sell": "136.88",
+        "company": "1Coin",
+        "brand": "NXM",
+        "type": "NXM",
+        "date": "20211224"
+      },
+      {
+        "buy": "150.35",
+        "sell": "150.35",
+        "company": "1Coin",
+        "brand": "Dash",
+        "type": "DASH",
+        "date": "20211224"
+      },
+      {
+        "buy": "165.41",
+        "sell": "165.41",
+        "company": "1Coin",
+        "brand": "Litecoin",
+        "type": "LTC",
+        "date": "20211224"
+      },
+      {
+        "buy": "166.29",
+        "sell": "166.29",
+        "company": "1Coin",
+        "brand": "Zcash",
+        "type": "ZEC",
+        "date": "20211224"
+      },
+      {
+        "buy": "189.71",
+        "sell": "189.71",
+        "company": "1Coin",
+        "brand": "Solana",
+        "type": "SOL",
+        "date": "20211224"
+      },
+      {
+        "buy": "191.67",
+        "sell": "191.67",
+        "company": "1Coin",
+        "brand": "Moonriver",
+        "type": "MOVR",
+        "date": "20211224"
+      },
+      {
+        "buy": "200.83",
+        "sell": "200.83",
+        "company": "1Coin",
+        "brand": "Quant",
+        "type": "QNT",
+        "date": "20211224"
+      },
+      {
+        "buy": "205.97",
+        "sell": "205.97",
+        "company": "1Coin",
+        "brand": "LINK",
+        "type": "LN",
+        "date": "20211224"
+      },
+      {
+        "buy": "209.36",
+        "sell": "209.36",
+        "company": "1Coin",
+        "brand": "Monero",
+        "type": "XMR",
+        "date": "20211224"
+      },
+      {
+        "buy": "211.7",
+        "sell": "211.7",
+        "company": "1Coin",
+        "brand": "Alchemix",
+        "type": "ALCX",
+        "date": "20211224"
+      },
+      {
+        "buy": "226.85",
+        "sell": "226.85",
+        "company": "1Coin",
+        "brand": "Compound",
+        "type": "COMP",
+        "date": "20211224"
+      },
+      {
+        "buy": "246.51",
+        "sell": "246.51",
+        "company": "1Coin",
+        "brand": "Aave",
+        "type": "AAVE",
+        "date": "20211224"
+      },
+      {
+        "buy": "264.76",
+        "sell": "264.76",
+        "company": "1Coin",
+        "brand": "Elrond",
+        "type": "EGLD",
+        "date": "20211224"
+      },
+      {
+        "buy": "288.13",
+        "sell": "288.13",
+        "company": "1Coin",
+        "brand": "Kusama",
+        "type": "KSM",
+        "date": "20211224"
+      },
+      {
+        "buy": "453.96",
+        "sell": "453.96",
+        "company": "1Coin",
+        "brand": "Gnosis",
+        "type": "GNO",
+        "date": "20211224"
+      },
+      {
+        "buy": "457.91",
+        "sell": "457.91",
+        "company": "1Coin",
+        "brand": "Bitcoin Cash",
+        "type": "BCH",
+        "date": "20211224"
+      },
+      {
+        "buy": "545.41",
+        "sell": "545.41",
+        "company": "1Coin",
+        "brand": "Binance Coin",
+        "type": "BNB",
+        "date": "20211224"
+      },
+      {
+        "buy": "548.35",
+        "sell": "548.35",
+        "company": "1Coin",
+        "brand": "Wrapped BNB",
+        "type": "WBNB",
+        "date": "20211224"
+      },
+      {
+        "buy": "1034.1",
+        "sell": "1034.1",
+        "company": "1Coin",
+        "brand": "Venus BTC",
+        "type": "vBTC",
+        "date": "20211224"
+      },
+      {
+        "buy": "1212.61",
+        "sell": "1212.61",
+        "company": "1Coin",
+        "brand": "Illuvium",
+        "type": "ILV",
+        "date": "20211224"
+      },
+      {
+        "buy": "1815.82",
+        "sell": "1815.82",
+        "company": "1Coin",
+        "brand": "PAX Gold",
+        "type": "PAXG",
+        "date": "20211224"
+      },
+      {
+        "buy": "2594.3",
+        "sell": "2594.3",
+        "company": "1Coin",
+        "brand": "Maker",
+        "type": "MKR",
+        "date": "20211224"
+      },
+      {
+        "buy": "4088.24",
+        "sell": "4088.24",
+        "company": "1Coin",
+        "brand": "Lido stETH",
+        "type": "STETH",
+        "date": "20211224"
+      },
+      {
+        "buy": "4099.48",
+        "sell": "4099.48",
+        "company": "1Coin",
+        "brand": "Ethereum 2",
+        "type": "ETH2",
+        "date": "20211224"
+      },
+      {
+        "buy": "4099.48",
+        "sell": "4099.48",
+        "company": "1Coin",
+        "brand": "Ethereum",
+        "type": "ETH",
+        "date": "20211224"
+      },
+      {
+        "buy": "31197.5",
+        "sell": "31197.5",
+        "company": "1Coin",
+        "brand": "yearn.finance",
+        "type": "YFI",
+        "date": "20211224"
+      },
+      {
+        "buy": "50896.6",
+        "sell": "50896.6",
+        "company": "1Coin",
+        "brand": "renBTC",
+        "type": "RENBTC",
+        "date": "20211224"
+      },
+      {
+        "buy": "50977",
+        "sell": "50977",
+        "company": "1Coin",
+        "brand": "Wrapped Bitcoin",
+        "type": "WBTC",
+        "date": "20211224"
+      },
+      {
+        "buy": "51140.6",
+        "sell": "51140.6",
+        "company": "1Coin",
+        "brand": "Bitcoin",
+        "type": "BTC",
+        "date": "20211224"
+      },
+      {
+        "buy": "51200.2",
+        "sell": "51200.2",
+        "company": "1Coin",
+        "brand": "Bitcoin BEP2",
+        "type": "BTCB",
+        "date": "20211224"
+      },
+      {
+        "buy": "51351.2",
+        "sell": "51351.2",
+        "company": "1Coin",
+        "brand": "Huobi BTC",
+        "type": "HBTC",
+        "date": "20211224"
+      },
+      {
+        "buy": "0",
+        "sell": "49150",
+        "company": "1OTHER",
+        "brand": "Mi Hồng 950",
+        "type": "SJC",
+        "date": "20211224"
+      },
+      {
+        "buy": "30900",
+        "sell": "32600",
+        "company": "1OTHER",
+        "brand": "Mi Hồng 610",
+        "type": "SJC",
+        "date": "20211224"
+      },
+      {
+        "buy": "31900",
+        "sell": "33600",
+        "company": "1OTHER",
+        "brand": "Mi Hồng 680",
+        "type": "SJC",
+        "date": "20211224"
+      },
+      {
+        "buy": "34600",
+        "sell": "36600",
+        "company": "1OTHER",
+        "brand": "Mi Hồng 750",
+        "type": "SJC",
+        "date": "20211224"
+      },
+      {
+        "buy": "50750",
+        "sell": "51750",
+        "company": "1OTHER",
+        "brand": "Mi Hồng 980",
+        "type": "SJC",
+        "date": "20211224"
+      },
+      {
+        "buy": "50950",
+        "sell": "51950",
+        "company": "1OTHER",
+        "brand": "Mi Hồng 985",
+        "type": "SJC",
+        "date": "20211224"
+      },
+      {
+        "buy": "51950",
+        "sell": "52250",
+        "company": "1OTHER",
+        "brand": "Mi Hồng 999",
+        "type": "SJC",
+        "date": "20211224"
+      },
+      {
+        "buy": "73.76",
+        "sell": "73.76",
+        "company": "2GROUP",
+        "brand": "OIL",
+        "type": "SJC",
+        "date": "20211224"
+      },
+      {
+        "buy": "1809.2",
+        "sell": "1810.2",
+        "company": "2GROUP",
+        "brand": "SPOT GOLD",
+        "type": "SJC",
+        "date": "20211224"
+      },
+      {
+        "buy": "61100",
+        "sell": "61400",
+        "company": "2GROUP",
+        "brand": "Mi Hồng SJC",
+        "type": "SJC",
+        "date": "20211224"
+      },
+      {
+        "buy": "60450",
+        "sell": "61850",
+        "company": "3BANKS",
+        "brand": "MARITIME BANK",
+        "type": "SJC",
+        "date": "20211224"
+      },
+      {
+        "buy": "60900",
+        "sell": "61400",
+        "company": "3BANKS",
+        "brand": "SACOMBANK",
+        "type": "SJC",
+        "date": "20211224"
+      },
+      {
+        "buy": "1426",
+        "sell": "1576",
+        "company": "DOJI",
+        "brand": "Nhẫn DOJI Hưng Thịnh Vượng",
+        "type": "Nữ trang 10k",
+        "date": "20211224"
+      },
+      {
+        "buy": "1426",
+        "sell": "1576",
+        "company": "DOJI",
+        "brand": "Hà Nội",
+        "type": "Nữ trang 10k",
+        "date": "20211224"
+      },
+      {
+        "buy": "2718",
+        "sell": "2788",
+        "company": "DOJI",
+        "brand": "Hồ Chí Minh",
+        "type": "Nữ trang 68",
+        "date": "20211224"
+      },
+      {
+        "buy": "2880",
+        "sell": "3080",
+        "company": "DOJI",
+        "brand": "Nhẫn DOJI Hưng Thịnh Vượng",
+        "type": "Nữ trang 14k",
+        "date": "20211224"
+      },
+      {
+        "buy": "2880",
+        "sell": "3080",
+        "company": "DOJI",
+        "brand": "Hồ Chí Minh",
+        "type": "Nữ Trang 14k",
+        "date": "20211224"
+      },
+      {
+        "buy": "2880",
+        "sell": "3080",
+        "company": "DOJI",
+        "brand": "Hà Nội",
+        "type": "Nữ trang 14k",
+        "date": "20211224"
+      },
+      {
+        "buy": "3440",
+        "sell": "3740",
+        "company": "DOJI",
+        "brand": "Nhẫn DOJI Hưng Thịnh Vượng",
+        "type": "Nữ trang 68",
+        "date": "20211224"
+      },
+      {
+        "buy": "3440",
+        "sell": "3740",
+        "company": "DOJI",
+        "brand": "Hà Nội",
+        "type": "Nữ trang 16k",
+        "date": "20211224"
+      },
+      {
+        "buy": "3834",
+        "sell": "4034",
+        "company": "DOJI",
+        "brand": "Nhẫn DOJI Hưng Thịnh Vượng",
+        "type": "Nữ trang 18k",
+        "date": "20211224"
+      },
+      {
+        "buy": "3834",
+        "sell": "4034",
+        "company": "DOJI",
+        "brand": "Hồ Chí Minh",
+        "type": "Nữ Trang 18k",
+        "date": "20211224"
+      },
+      {
+        "buy": "3834",
+        "sell": "4034",
+        "company": "DOJI",
+        "brand": "Hà Nội",
+        "type": "Nữ trang 18k",
+        "date": "20211224"
+      },
+      {
+        "buy": "5080",
+        "sell": "5200",
+        "company": "DOJI",
+        "brand": "Nhẫn DOJI Hưng Thịnh Vượng",
+        "type": "Nữ trang 99",
+        "date": "20211224"
+      },
+      {
+        "buy": "5080",
+        "sell": "5200",
+        "company": "DOJI",
+        "brand": "Hồ Chí Minh",
+        "type": "Nữ trang 99",
+        "date": "20211224"
+      },
+      {
+        "buy": "5080",
+        "sell": "5200",
+        "company": "DOJI",
+        "brand": "Hà Nội",
+        "type": "Nữ trang 99",
+        "date": "20211224"
+      },
+      {
+        "buy": "5150",
+        "sell": "5235",
+        "company": "DOJI",
+        "brand": "Nhẫn DOJI Hưng Thịnh Vượng",
+        "type": "Nữ trang 99.9",
+        "date": "20211224"
+      },
+      {
+        "buy": "5150",
+        "sell": "5235",
+        "company": "DOJI",
+        "brand": "Hồ Chí Minh",
+        "type": "Nữ trang 99.9",
+        "date": "20211224"
+      },
+      {
+        "buy": "5150",
+        "sell": "5235",
+        "company": "DOJI",
+        "brand": "Hà Nội",
+        "type": "Nữ trang 99.9",
+        "date": "20211224"
+      },
+      {
+        "buy": "5160",
+        "sell": "5245",
+        "company": "DOJI",
+        "brand": "Nhẫn DOJI Hưng Thịnh Vượng",
+        "type": "Nữ trang 99.99",
+        "date": "20211224"
+      },
+      {
+        "buy": "5160",
+        "sell": "5245",
+        "company": "DOJI",
+        "brand": "Hồ Chí Minh",
+        "type": "Nữ trang 99.99",
+        "date": "20211224"
+      },
+      {
+        "buy": "5160",
+        "sell": "5245",
+        "company": "DOJI",
+        "brand": "Hà Nội",
+        "type": "Nữ trang 99.99",
+        "date": "20211224"
+      },
+      {
+        "buy": "5182",
+        "sell": "5212",
+        "company": "DOJI",
+        "brand": "",
+        "type": "Nguyên liệu 999",
+        "date": "20211224"
+      },
+      {
+        "buy": "5185",
+        "sell": "5210",
+        "company": "DOJI",
+        "brand": "Hà Nội",
+        "type": "Nguyên liệu 99.9",
+        "date": "20211224"
+      },
+      {
+        "buy": "5187",
+        "sell": "5217",
+        "company": "DOJI",
+        "brand": "",
+        "type": "Nguyên liệu 9999",
+        "date": "20211224"
+      },
+      {
+        "buy": "5190",
+        "sell": "5210",
+        "company": "DOJI",
+        "brand": "Hồ Chí Minh",
+        "type": "Nguyên liệu 999",
+        "date": "20211224"
+      },
+      {
+        "buy": "5190",
+        "sell": "5215",
+        "company": "DOJI",
+        "brand": "Hà Nội",
+        "type": "Nguyên liệu 99.99",
+        "date": "20211224"
+      },
+      {
+        "buy": "5195",
+        "sell": "5275",
+        "company": "DOJI",
+        "brand": "Hồ Chí Minh",
+        "type": "Nhẫn H.T.V",
+        "date": "20211224"
+      },
+      {
+        "buy": "5195",
+        "sell": "5215",
+        "company": "DOJI",
+        "brand": "Hồ Chí Minh",
+        "type": "Nguyên liệu 9999",
+        "date": "20211224"
+      },
+      {
+        "buy": "5195",
+        "sell": "5275",
+        "company": "DOJI",
+        "brand": "Hà Nội",
+        "type": "Hưng Thịnh Vượng",
+        "date": "20211224"
+      },
+      {
+        "buy": "6080",
+        "sell": "6145",
+        "company": "DOJI",
+        "brand": "Hà Nội",
+        "type": "Lộc Phát Tài",
+        "date": "20211224"
+      },
+      {
+        "buy": "6080",
+        "sell": "6145",
+        "company": "DOJI",
+        "brand": "Hà Nội",
+        "type": "Kim Thần Tài",
+        "date": "20211224"
+      },
+      {
+        "buy": "6080",
+        "sell": "6145",
+        "company": "DOJI",
+        "brand": "Hà Nội",
+        "type": "Kim Ngưu",
+        "date": "20211224"
+      },
+      {
+        "buy": "6080",
+        "sell": "6145",
+        "company": "DOJI",
+        "brand": "Hà Nội",
+        "type": "Kim Ngân Tài",
+        "date": "20211224"
+      },
+      {
+        "buy": "6080",
+        "sell": "6150",
+        "company": "DOJI",
+        "brand": "",
+        "type": "Lộc Phát Tài",
+        "date": "20211224"
+      },
+      {
+        "buy": "6080",
+        "sell": "6150",
+        "company": "DOJI",
+        "brand": "",
+        "type": "Kim Thần Tài",
+        "date": "20211224"
+      },
+      {
+        "buy": "6090",
+        "sell": "6150",
+        "company": "DOJI",
+        "brand": "Hồ Chí Minh",
+        "type": "Lộc Phát Tài",
+        "date": "20211224"
+      },
+      {
+        "buy": "6090",
+        "sell": "6150",
+        "company": "DOJI",
+        "brand": "Hồ Chí Minh",
+        "type": "Kim Thần Tài",
+        "date": "20211224"
+      },
+      {
+        "buy": "6090",
+        "sell": "6150",
+        "company": "DOJI",
+        "brand": "Hồ Chí Minh",
+        "type": "Kim Ngưu",
+        "date": "20211224"
+      },
+      {
+        "buy": "51850",
+        "sell": "52100",
+        "company": "DOJI",
+        "brand": "Hà Nội",
+        "type": "Nguyên liêu 999 - HN",
+        "date": "20211224"
+      },
+      {
+        "buy": "51900",
+        "sell": "52150",
+        "company": "DOJI",
+        "brand": "Hà Nội",
+        "type": "Nguyên liêu 9999 - HN",
+        "date": "20211224"
+      },
+      {
+        "buy": "60800",
+        "sell": "61450",
+        "company": "DOJI",
+        "brand": "Hà Nội",
+        "type": "AVPL / DOJI HN lẻ",
+        "date": "20211224"
+      },
+      {
+        "buy": "60800",
+        "sell": "61450",
+        "company": "DOJI",
+        "brand": "Hà Nội",
+        "type": "AVPL / DOJI HN buôn",
+        "date": "20211224"
+      },
+      {
+        "buy": "60800",
+        "sell": "61500",
+        "company": "DOJI",
+        "brand": "",
+        "type": "AVPL / DOJI ĐN lẻ",
+        "date": "20211224"
+      },
+      {
+        "buy": "60800",
+        "sell": "61500",
+        "company": "DOJI",
+        "brand": "",
+        "type": "AVPL / DOJI ĐN buôn",
+        "date": "20211224"
+      },
+      {
+        "buy": "60850",
+        "sell": "61450",
+        "company": "DOJI",
+        "brand": "",
+        "type": "AVPL / DOJI CT lẻ",
+        "date": "20211224"
+      },
+      {
+        "buy": "60850",
+        "sell": "61450",
+        "company": "DOJI",
+        "brand": "",
+        "type": "AVPL / DOJI CT buôn",
+        "date": "20211224"
+      },
+      {
+        "buy": "60900",
+        "sell": "61500",
+        "company": "DOJI",
+        "brand": "Hồ Chí Minh",
+        "type": "AVPL / DOJI HCM lẻ",
+        "date": "20211224"
+      },
+      {
+        "buy": "60900",
+        "sell": "61500",
+        "company": "DOJI",
+        "brand": "Hồ Chí Minh",
+        "type": "AVPL / DOJI HCM buôn",
+        "date": "20211224"
+      }
+    ]
+  },
+  {
     "date": "20211223",
     "value": [
       {
@@ -16296,24 +18613,24 @@
     "date": "20211214",
     "value": [
       {
-        "buy": "9.37276e+09",
-        "sell": "9.37276e+09",
+        "buy": "9.37281",
+        "sell": "9.37281",
         "company": "1Coin",
         "brand": "Badger DAO",
         "type": "BADGER",
         "date": "20211214"
       },
       {
-        "buy": "3.19038e+09",
-        "sell": "3.19038e+09",
+        "buy": "3.19043",
+        "sell": "3.19043",
         "company": "1Coin",
         "brand": "Clover Finance",
         "type": "CLV",
         "date": "20211214"
       },
       {
-        "buy": "9.02048e+08",
-        "sell": "9.02048e+08",
+        "buy": "9.02053",
+        "sell": "9.02053",
         "company": "1Coin",
         "brand": "TerraUSD",
         "type": "UST",
@@ -113186,8 +115503,8 @@
         "date": "20211110"
       },
       {
-        "buy": "-29.6",
-        "sell": "-29.6",
+        "buy": "-2729.6",
+        "sell": "-2729.6",
         "company": "1Coin",
         "brand": "Deeper Network",
         "type": "DPR",
