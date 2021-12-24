@@ -68,7 +68,6 @@ protected:
 	//new function
 public:
 	afx_msg void OnBnClickedBtnListen();
-	afx_msg void OnBnClickedBtnShutdown();
 	afx_msg void OnClose();
 	CListBox _list_server_log;
 
@@ -84,7 +83,7 @@ public:
 	int id = 0, client_addr_len[100];
 	SOCKET client_socket[100];
 	sockaddr_in client_addr[100];
-	CWinThread* client_thread[100];
+	CWinThread* client_thread[100], * handle_client_thread = NULL;
 
 
 
