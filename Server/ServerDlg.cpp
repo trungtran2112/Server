@@ -21,6 +21,7 @@ int mRecv(CString& StrRecv, SOCKET sClient);
 user_node* add_tail(UserList& L);
 bool load_username_from_file(UserList& L);
 void save_username_to_file(UserList L);
+int CharToWchar_t(const char* src, CString& des);
 
 // CAboutDlg dialog used for App About
 
@@ -77,8 +78,6 @@ BEGIN_MESSAGE_MAP(CServerDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BTN_LISTEN, &CServerDlg::OnBnClickedBtnListen)
-	ON_BN_CLICKED(IDC_BTN_SHUTDOWN, &CServerDlg::OnBnClickedBtnShutdown)
-	//	ON_WM_CLOSE()
 	ON_WM_CLOSE()
 END_MESSAGE_MAP()
 
@@ -115,6 +114,7 @@ BOOL CServerDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	// TODO: Add extra initialization here
+
 
 	//Initialize Winsock
 	WSADATA wsaDATA;
@@ -224,7 +224,7 @@ void CServerDlg::OnBnClickedBtnListen()
 	listen(listen_socket, 5);
 	_list_server_log.AddString(_T("Hệ thống: Đang lắng nghe kết nối..."));
 
-	AfxBeginThread(handle_client, this);
+	handle_client_thread = AfxBeginThread(handle_client, this);
 
 	GetDlgItem(IDC_BTN_LISTEN)->EnableWindow(false);
 }
@@ -259,7 +259,7 @@ UINT client_thread(LPVOID param)
 	while (true)
 	{
 		bytes_received = mRecv(flag, ptr->client_socket[id]);
-		
+
 		//client disconnect
 		if (bytes_received == 0)
 		{
@@ -270,7 +270,7 @@ UINT client_thread(LPVOID param)
 				ptr->_list_server_log.AddString(_T("Hệ thống: Một client chưa đăng nhập đã ngắt kết nối."));
 			break;
 		}
-		
+
 		//error connection 
 		else if (bytes_received < 0)
 		{
@@ -391,10 +391,10 @@ UINT client_thread(LPVOID param)
 			{
 				do
 				{
-					CString nodeCompany = CA2T(current_node->data.company.c_str());
-					CString nodeType = CA2T(current_node->data.type.c_str());
-					CString nodeBrand = CA2T(current_node->data.brand.c_str());
-					CString nodeSend;
+					CString nodeCompany, nodeType, nodeBrand, nodeSend;
+					CharToWchar_t(current_node->data.company.c_str(), nodeCompany);
+					CharToWchar_t(current_node->data.type.c_str(), nodeType);
+					CharToWchar_t(current_node->data.brand.c_str(), nodeBrand);
 					switch (search_case)
 					{
 					case 1:
@@ -716,6 +716,24 @@ double string_to_double(std::string s)
 	return value;
 }
 
+int CharToWchar_t(const char* src, CString& des)
+{
+	int wchar_num = MultiByteToWideChar(CP_UTF8, 0, src, strlen(src), NULL, 0);
+	if (wchar_num <= 0)
+		return -1;
+	wchar_t* wstr = new wchar_t[wchar_num + 1];
+	ZeroMemory(wstr, wchar_num);
+	if (!wstr)
+	{
+		return -1;
+	}
+	MultiByteToWideChar(CP_UTF8, 0, src, strlen(src), wstr, wchar_num);
+	wstr[wchar_num] = '\0';
+	des = wstr;
+	delete[]wstr;
+	return wchar_num;
+}
+
 Node* add_head(SLList& L)
 {
 	Node* newNode = new Node;
@@ -943,30 +961,24 @@ UINT update_database(LPVOID Param)
 
 		}
 
-
 		ptr->_list_server_log.AddString(_T("Hệ thống: Dữ liệu của hôm nay vừa được cập nhật!"));
 		Sleep(1800000);//sleep for 1 800 000 seconds = 30 minutes
 	}
 	return 0;
 }
 
-void CServerDlg::OnBnClickedBtnShutdown()
-{
-	// TODO: Add your control notification handler code here
-
-	
-}
-
 void CServerDlg::OnClose()
 {
-	
+
 	// TODO: Add your message handler code here and/or call default
-	/*for (int i = 0; i < id; i++)
+	closesocket(listen_socket);
+	for (int i = 0; i < id; i++)
 	{
 		closesocket(client_socket[i]);
-	}*/
-	save_data_to_file(working_list);
+	}
 	delete_list(working_list);
 	delete_list(user_list);
 	CDialogEx::OnClose();
 }
+
+

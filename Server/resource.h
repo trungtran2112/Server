@@ -9,7 +9,6 @@
 #define IDR_MAINFRAME                   128
 #define IDC_LIST_SERVER_LOG             1000
 #define IDC_BTN_LISTEN                  1001
-#define IDC_BTN_SHUTDOWN                1002
 
 // Next default values for new objects
 // 

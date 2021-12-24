@@ -1,10 +1,14 @@
 [
-  {
-    "username": "trung",
-    "password": "trung"
-  },
-  {
-    "username": "1",
-    "password": "1"
-  }
+{
+"username":"trung",
+"password":"trung"
+},
+{
+"username":"1",
+"password":"1"
+},
+{
+"username":"2",
+"password":"2"
+}
 ]
