@@ -736,6 +736,24 @@ int CharToWchar_t(const char* src, CString& des)
 	return wchar_num;
 }
 
+int CharToWchar_t(const char* src, CString& des)
+{
+	int wchar_num = MultiByteToWideChar(CP_UTF8, 0, src, strlen(src), NULL, 0);
+	if (wchar_num <= 0)
+		return -1;
+	wchar_t* wstr = new wchar_t[wchar_num + 1];
+	ZeroMemory(wstr, wchar_num);
+	if (!wstr)
+	{
+		return -1;
+	}
+	MultiByteToWideChar(CP_UTF8, 0, src, strlen(src), wstr, wchar_num);
+	wstr[wchar_num] = '\0';
+	des = wstr;
+	delete[]wstr;
+	return wchar_num;
+}
+
 Node* add_head(SLList& L)
 {
 	Node* newNode = new Node;
