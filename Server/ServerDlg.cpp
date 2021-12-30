@@ -261,20 +261,13 @@ UINT client_thread(LPVOID param)
 		bytes_received = mRecv(flag, ptr->client_socket[id]);
 
 		//client disconnect
-		if (bytes_received == 0)
+		if (bytes_received <= 0)
 		{
 			//client disconnect
 			if (client_name != "")
 				ptr->_list_server_log.AddString(_T("Hệ thống: ") + client_name + _T(" đã ngắt kết nối."));
 			else
 				ptr->_list_server_log.AddString(_T("Hệ thống: Một client chưa đăng nhập đã ngắt kết nối."));
-			break;
-		}
-
-		//error connection 
-		else if (bytes_received < 0)
-		{
-			ptr->_list_server_log.AddString(_T("Hệ thống: Có sự cố xảy ra với ") + client_name + _T("."));
 			break;
 		}
 
@@ -718,23 +711,23 @@ double string_to_double(std::string s)
 	return value;
 }
 
-int CharToWchar_t(const char* src, CString& des)
-{
-	int wchar_num = MultiByteToWideChar(CP_UTF8, 0, src, strlen(src), NULL, 0);
-	if (wchar_num <= 0)
-		return -1;
-	wchar_t* wstr = new wchar_t[wchar_num + 1];
-	ZeroMemory(wstr, wchar_num);
-	if (!wstr)
-	{
-		return -1;
-	}
-	MultiByteToWideChar(CP_UTF8, 0, src, strlen(src), wstr, wchar_num);
-	wstr[wchar_num] = '\0';
-	des = wstr;
-	delete[]wstr;
-	return wchar_num;
-}
+//int CharToWchar_t(const char* src, CString& des)
+//{
+//	int wchar_num = MultiByteToWideChar(CP_UTF8, 0, src, strlen(src), NULL, 0);
+//	if (wchar_num <= 0)
+//		return -1;
+//	wchar_t* wstr = new wchar_t[wchar_num + 1];
+//	ZeroMemory(wstr, wchar_num);
+//	if (!wstr)
+//	{
+//		return -1;
+//	}
+//	MultiByteToWideChar(CP_UTF8, 0, src, strlen(src), wstr, wchar_num);
+//	wstr[wchar_num] = '\0';
+//	des = wstr;
+//	delete[]wstr;
+//	return wchar_num;
+//}
 
 int CharToWchar_t(const char* src, CString& des)
 {
