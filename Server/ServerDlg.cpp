@@ -1006,6 +1006,8 @@ void closeThread(CWinThread* thread)
 void CServerDlg::OnClose()
 {
 	// TODO: Add your message handler code here and/or call default
+	delete_list(working_list);
+	delete_list(user_list);
 	closeThread(update_database_thread);
 	closesocket(listen_socket);
 	for (int i = 0; i < id; i++)
@@ -1014,7 +1016,5 @@ void CServerDlg::OnClose()
 		closesocket(client_socket[i]);
 	}
 	closeThread(handle_client_thread);
-	delete_list(working_list);
-	delete_list(user_list);
 	CDialogEx::OnClose();
 }
