@@ -5,7 +5,7 @@
 #ifndef SERVERDLG_H
 #define SERVERDLG_H
 
-#define PORT 1234
+#define PORT 2831
 #define WM_SOCKET WM_USER+1
 
 struct user_node
